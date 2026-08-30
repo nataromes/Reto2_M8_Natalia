@@ -11,11 +11,23 @@ runtime: shiny
 library(flexdashboard)
 library(tidyverse)
 library(shiny)
+library(here)
 
-datos <- read_csv("Datos/BBDD finales/datos_gapminder_final.csv")
+here::i_am("Dashboard/Código.Rmd")
 
-#añadimos un slider para facilitar la interacción con el gráfico y poder seleccionar el tiempo
-sliderInput(
+datos <- read_csv(
+  here("Datos", "BBDD finales", "datos_gapminder_final.csv"),
+  show_col_types = FALSE
+)
+
+
+```
+
+Column {data-width=650}
+-----------------------------------------------------------------------
+```{r}
+# Añadimos un slider para facilitar la elección de tiempo
+shiny::sliderInput(
   inputId = "year",
   label = "Selecciona un año:",
   min = 1960,
@@ -25,17 +37,16 @@ sliderInput(
 )
 ```
 
-Column {data-width=650}
------------------------------------------------------------------------
-
 ### Chart A
 
 ```{r}
 renderPlot({
-  
+
+  req(input$year)
+
   datos_filtrados <- datos %>%
     filter(year == input$year)
-  
+
   ggplot(datos_filtrados,
          aes(x = income, y = life_expectancy)) +
     geom_point() +
