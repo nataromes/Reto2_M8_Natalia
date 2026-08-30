@@ -12,6 +12,7 @@ library(flexdashboard)
 library(tidyverse)
 library(shiny)
 library(here)
+library(plotly)
 
 here::i_am("Dashboard/Código.Rmd")
 
@@ -26,7 +27,18 @@ datos <- read_csv(
 Column {data-width=650}
 -----------------------------------------------------------------------
 ```{r}
-# Añadimos un slider para facilitar la elección de tiempo
+# Añadimos un slider para facilitar la elección de tiempo y otro para permitir la selección de diferentes variables
+
+selectInput(
+  inputId = "variable_x",
+  label = "Variable a comparar con la esperanza de vida:",
+  choices = c(
+    "Ingresos" = "income",
+    "Fertilidad" = "fertility"
+  ),
+  selected = "income"
+)
+
 shiny::sliderInput(
   inputId = "year",
   label = "Selecciona un año:",
@@ -40,21 +52,45 @@ shiny::sliderInput(
 ### Chart A
 
 ```{r}
-renderPlot({
+renderPlotly({
 
-  req(input$year)
+  req(input$year, input$variable_x)
 
   datos_filtrados <- datos %>%
     filter(year == input$year)
 
-  ggplot(datos_filtrados,
-         aes(x = income, y = life_expectancy)) +
+  nombre_variable <- ifelse(
+    input$variable_x == "income",
+    "Ingresos",
+    "Fertilidad"
+  )
+
+  grafico <- ggplot(
+    datos_filtrados,
+    aes(
+      x = .data[[input$variable_x]],
+      y = life_expectancy,
+      text = paste(
+        "País:", name,
+        "<br>", nombre_variable, ":",
+        round(.data[[input$variable_x]], 2),
+        "<br>Esperanza de vida:",
+        round(life_expectancy, 1)
+      )
+    )
+  ) +
     geom_point() +
     labs(
-      x = "Ingresos por persona",
+      x = nombre_variable,
       y = "Esperanza de vida",
-      title = paste("Ingresos y esperanza de vida -", input$year)
+      title = paste(
+        nombre_variable,
+        "y esperanza de vida -",
+        input$year
+      )
     )
+
+  ggplotly(grafico, tooltip = "text")
 })
 ```
 
@@ -64,12 +100,55 @@ Column {data-width=350}
 ### Chart B
 
 ```{r}
-
+selectInput(
+  inputId = "country",
+  label = "Selecciona un país:",
+  choices = sort(unique(datos$name)),
+  selected = "Spain"
+)
 ```
+
+```{r}
+renderPlot({
+
+  req(input$country)
+
+  datos_pais <- datos %>%
+    filter(name == input$country)
+
+  ggplot(datos_pais, aes(x = year, y = life_expectancy)) +
+    geom_line() +
+    labs(
+      title = paste("Evolución de la esperanza de vida -", input$country),
+      x = "Año",
+      y = "Esperanza de vida"
+    )
+})
+```
+
 
 ### Chart C
 
 ```{r}
+renderTable({
 
+  req(input$country, input$year)
+
+  datos_resumen <- datos %>%
+    filter(
+      name == input$country,
+      year == input$year
+    ) %>%
+    select(
+      País = name,
+      Año = year,
+      Ingresos = income,
+      Esperanza_de_vida = life_expectancy,
+      Fertilidad = fertility,
+      Población = population
+    )
+
+  datos_resumen
+})
 ```
 
