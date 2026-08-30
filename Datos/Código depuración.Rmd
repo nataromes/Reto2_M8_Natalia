@@ -3,3 +3,74 @@ title: "Código depuración"
 output: html_document
 ---
 
+```{r}
+library(tidyverse)
+library(readxl)
+
+#importamos bbdd individuales
+
+ingresos <- read_csv("BBDD originales/Average daily income.csv")
+
+esperanza_vida <- read_excel("BBDD originales/Life expectancy.xlsx")
+
+fertilidad <- read_csv("BBDD originales/Number of births per woman.csv")
+
+poblacion <- read_csv("BBDD originales/Population.csv")
+
+#se detectan problemas en el archivo ingresos
+
+problems(ingresos)
+```
+```{r}
+# buscamos donde están los problemas
+
+lineas <- readLines("BBDD originales/Average daily income.csv")
+
+lineas[c(37, 38, 61)]
+```
+```{r}
+# se identiican problemas de codificación en tres paises que corregimos
+ruta_ingresos <- "BBDD originales/Average daily income.csv"
+
+lineas <- readLines(ruta_ingresos)
+
+# Corregir las tres filas con problemas de comillas
+lineas[37] <- sub('^"cod,""Congo, Dem. Rep.""', 'cod,"Congo, Dem. Rep."', lineas[37])
+lineas[38] <- sub('^"cog,""Congo, Rep.""', 'cog,"Congo, Rep."', lineas[38])
+lineas[61] <- sub('^"fsm,""Micronesia, Fed. Sts.""', 'fsm,"Micronesia, Fed. Sts."', lineas[61])
+
+# Creamos una copia corregida del archivo
+writeLines(
+  lineas,
+  "BBDD corregidas/Average daily income corregido.csv"
+)
+
+
+ingresos <- read_csv(
+  "BBDD corregidas/Average daily income corregido.csv",
+  show_col_types = FALSE
+)
+
+
+# Comprobar que no quedan errores
+problems(ingresos)
+
+```
+
+```{r}
+ingresos <- ingresos %>%
+  mutate(across(-c(geo, name), as.numeric))
+
+ingresos_largo <- ingresos %>%
+  pivot_longer(
+    cols = -c(geo, name),
+    names_to = "year",
+    values_to = "income"
+  ) %>%
+  mutate(year = as.integer(year))
+```
+
+```{r}
+which(is.na(ingresos), arr.ind = TRUE)
+# el error corresponde a un dato de proyección que no usaremos, por lo que se mantiene como NA
+```
