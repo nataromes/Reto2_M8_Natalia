@@ -8,7 +8,6 @@
 \date{\today}
 
 \begin{document}
-\SweaveOpts{concordance=TRUE}
 
 \maketitle
 
@@ -20,5 +19,4 @@ Este informe resume los principales resultados del proyecto de Ciencia de Datos 
 
 El objetivo principal del proyecto es analizar de forma visual la relación entre distintos indicadores socioeconómicos, demográficos y sanitarios de varios países.
 
-\end{document} 
-
+\end{document}
