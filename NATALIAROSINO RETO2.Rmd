@@ -3,3 +3,7 @@ title: "NATALIAROSINO RETO2"
 output: html_document
 ---
 
+```{r}
+print('hello')
+```
+
