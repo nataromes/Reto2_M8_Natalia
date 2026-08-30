@@ -1,0 +1,2274 @@
+<!DOCTYPE html>
+<!-- saved from url=(0022)http://127.0.0.1:7104/ -->
+<html class=""><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  
+  <script type="application/shiny-singletons"></script>
+  <script type="application/html-dependencies">jquery[3.7.1];shiny-css[1.14.0];shiny-busy-indicators[1.14.0];shiny-javascript[1.14.0]</script>
+<script src="./Dashboard Gapminder_files/jquery.min.js.descarga"></script>
+<link href="./Dashboard Gapminder_files/shiny.min.css" rel="stylesheet">
+<link href="./Dashboard Gapminder_files/busy-indicators.css" rel="stylesheet">
+<script src="./Dashboard Gapminder_files/shiny.min.js.descarga"></script>  <script src="./Dashboard Gapminder_files/rmd_loader.js.descarga"></script>
+  <link href="./Dashboard Gapminder_files/rmd_loader.css" rel="stylesheet">
+<script src="./Dashboard Gapminder_files/header-attrs.js.descarga"></script><meta name="viewport" content="width=device-width, initial-scale=1"><link href="./Dashboard Gapminder_files/cosmo.min.css" rel="stylesheet" type="text/css"><script src="./Dashboard Gapminder_files/bootstrap.min.js.descarga"></script><script src="./Dashboard Gapminder_files/html5shiv.min.js.descarga"></script><script src="./Dashboard Gapminder_files/respond.min.js.descarga"></script><style>h1 {font-size: 34px;}
+       h1.title {font-size: 38px;}
+       h2 {font-size: 30px;}
+       h3 {font-size: 24px;}
+       h4 {font-size: 18px;}
+       h5 {font-size: 16px;}
+       h6 {font-size: 12px;}
+       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
+       pre:not([class]) { background-color: white }</style><script src="./Dashboard Gapminder_files/jquery.stickytableheaders.min.js.descarga"></script><link href="./Dashboard Gapminder_files/theme-cosmo-value-box.css" rel="stylesheet" type="text/css"><link href="./Dashboard Gapminder_files/flexdashboard.min.css" rel="stylesheet" type="text/css"><link href="./Dashboard Gapminder_files/theme-cosmo.css" rel="stylesheet" type="text/css"><link href="./Dashboard Gapminder_files/selectize.bootstrap3.css" rel="stylesheet" type="text/css"><script src="./Dashboard Gapminder_files/selectize.min.js.descarga"></script><script src="./Dashboard Gapminder_files/selectize-plugin-a11y.min.js.descarga"></script><script src="./Dashboard Gapminder_files/ion.rangeSlider.min.js.descarga"></script><script src="./Dashboard Gapminder_files/strftime-min.js.descarga"></script><link href="./Dashboard Gapminder_files/ion.rangeSlider.css" rel="stylesheet" type="text/css"><link href="./Dashboard Gapminder_files/fill.css" rel="stylesheet" type="text/css"><script src="./Dashboard Gapminder_files/htmlwidgets.js.descarga"></script><script src="./Dashboard Gapminder_files/plotly.js.descarga"></script><link href="./Dashboard Gapminder_files/rmd_perf.css" rel="stylesheet" type="text/css"><script src="./Dashboard Gapminder_files/rmd_perf.js.descarga"></script><meta name="rstudio_origin" content="127.0.0.1:37191"><script src="./Dashboard Gapminder_files/rsiframe.js.descarga"></script>
+
+
+
+<meta name="generator" content="pandoc">
+
+
+
+<title>Dashboard Gapminder</title>
+
+<meta property="og:title" content="Dashboard Gapminder">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+<link rel="icon" href="data:image/x-icon;" type="image/x-icon">
+
+
+<script type="text/javascript">
+window.FlexDashboardComponents = [];
+</script>
+
+<style type="text/css">
+/*
+  CSS for flexdashboard.js' use of Sly(). The sizing/position of this CSS needs to be
+  applied _before_ flexdashboard.js initializes, which is why this CSS has been pulled
+  out from flexdashboard.scss and inlined in the document's head.
+*/
+
+.storyboard-nav button {
+  background: transparent;
+  border: 0;
+  opacity: .3;
+  outline: none;
+  padding: 0;
+}
+
+.storyboard-nav button:hover,
+.storyboard-nav button:hover {
+  opacity: .5;
+}
+
+.storyboard-nav button:disabled,
+.storyboard-nav button:disabled {
+  opacity: .1;
+}
+
+.storyboard-nav .sbnext,
+.storyboard-nav .sbprev {
+  float: left;
+  width: 2%;
+  height: 120px;
+}
+
+.storyboard-nav .sbprev {
+  text-align: left;
+  width: 2%;
+}
+
+.storyboard-nav .sbnext {
+  float: right;
+  text-align: right;
+  margin-right: 8px;
+}
+
+.storyboard-nav .sbframelist {
+  margin: 0 auto;
+  width: 94%;
+  height: 120px;
+  overflow: hidden;
+  text-shadow: none;
+  margin-bottom: 8px;
+}
+
+.storyboard-nav .sbframelist ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+.storyboard-nav .sbframelist ul li {
+  float: left;
+  width: 270px;
+  height: 100%;
+  padding: 10px 10px 10px 10px;
+  margin-right: 8px;
+  text-align: left;
+  cursor: pointer;
+}
+
+.storyboard-nav .sbframelist ul li:last-child {
+  margin-right: 0px;
+}
+
+.sbframe-commentary {
+  width: 300px;
+}
+
+.sbframe-commentary ul {
+  padding-left: 22px;
+}
+
+.sbframe.active {
+  display: flex;
+}
+
+.sbframe:not(.active) {
+  display: none;
+}
+@media only screen and (min-width: 768px) {
+html, body {
+  height: 100%;
+}
+
+#dashboard-container {
+  height: 100%;
+}
+}
+</style>
+
+
+
+<script type="text/javascript" src="./Dashboard Gapminder_files/MathJax.js.descarga"></script><style type="text/css">.MathJax_Hover_Frame {border-radius: .25em; -webkit-border-radius: .25em; -moz-border-radius: .25em; -khtml-border-radius: .25em; box-shadow: 0px 0px 15px #83A; -webkit-box-shadow: 0px 0px 15px #83A; -moz-box-shadow: 0px 0px 15px #83A; -khtml-box-shadow: 0px 0px 15px #83A; border: 1px solid #A6D ! important; display: inline-block; position: absolute}
+.MathJax_Menu_Button .MathJax_Hover_Arrow {position: absolute; cursor: pointer; display: inline-block; border: 2px solid #AAA; border-radius: 4px; -webkit-border-radius: 4px; -moz-border-radius: 4px; -khtml-border-radius: 4px; font-family: 'Courier New',Courier; font-size: 9px; color: #F0F0F0}
+.MathJax_Menu_Button .MathJax_Hover_Arrow span {display: block; background-color: #AAA; border: 1px solid; border-radius: 3px; line-height: 0; padding: 4px}
+.MathJax_Hover_Arrow:hover {color: white!important; border: 2px solid #CCC!important}
+.MathJax_Hover_Arrow:hover span {background-color: #CCC!important}
+</style><style type="text/css">#MathJax_About {position: fixed; left: 50%; width: auto; text-align: center; border: 3px outset; padding: 1em 2em; background-color: #DDDDDD; color: black; cursor: default; font-family: message-box; font-size: 120%; font-style: normal; text-indent: 0; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; z-index: 201; border-radius: 15px; -webkit-border-radius: 15px; -moz-border-radius: 15px; -khtml-border-radius: 15px; box-shadow: 0px 10px 20px #808080; -webkit-box-shadow: 0px 10px 20px #808080; -moz-box-shadow: 0px 10px 20px #808080; -khtml-box-shadow: 0px 10px 20px #808080; filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true')}
+#MathJax_About.MathJax_MousePost {outline: none}
+.MathJax_Menu {position: absolute; background-color: white; color: black; width: auto; padding: 2px; border: 1px solid #CCCCCC; margin: 0; cursor: default; font: menu; text-align: left; text-indent: 0; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; z-index: 201; box-shadow: 0px 10px 20px #808080; -webkit-box-shadow: 0px 10px 20px #808080; -moz-box-shadow: 0px 10px 20px #808080; -khtml-box-shadow: 0px 10px 20px #808080; filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true')}
+.MathJax_MenuItem {padding: 2px 2em; background: transparent}
+.MathJax_MenuArrow {position: absolute; right: .5em; padding-top: .25em; color: #666666; font-size: .75em}
+.MathJax_MenuActive .MathJax_MenuArrow {color: white}
+.MathJax_MenuArrow.RTL {left: .5em; right: auto}
+.MathJax_MenuCheck {position: absolute; left: .7em}
+.MathJax_MenuCheck.RTL {right: .7em; left: auto}
+.MathJax_MenuRadioCheck {position: absolute; left: 1em}
+.MathJax_MenuRadioCheck.RTL {right: 1em; left: auto}
+.MathJax_MenuLabel {padding: 2px 2em 4px 1.33em; font-style: italic}
+.MathJax_MenuRule {border-top: 1px solid #CCCCCC; margin: 4px 1px 0px}
+.MathJax_MenuDisabled {color: GrayText}
+.MathJax_MenuActive {background-color: Highlight; color: HighlightText}
+.MathJax_MenuDisabled:focus, .MathJax_MenuLabel:focus {background-color: #E8E8E8}
+.MathJax_ContextMenu:focus {outline: none}
+.MathJax_ContextMenu .MathJax_MenuItem:focus {outline: none}
+#MathJax_AboutClose {top: .2em; right: .2em}
+.MathJax_Menu .MathJax_MenuClose {top: -10px; left: -10px}
+.MathJax_MenuClose {position: absolute; cursor: pointer; display: inline-block; border: 2px solid #AAA; border-radius: 18px; -webkit-border-radius: 18px; -moz-border-radius: 18px; -khtml-border-radius: 18px; font-family: 'Courier New',Courier; font-size: 24px; color: #F0F0F0}
+.MathJax_MenuClose span {display: block; background-color: #AAA; border: 1.5px solid; border-radius: 18px; -webkit-border-radius: 18px; -moz-border-radius: 18px; -khtml-border-radius: 18px; line-height: 0; padding: 8px 0 6px}
+.MathJax_MenuClose:hover {color: white!important; border: 2px solid #CCC!important}
+.MathJax_MenuClose:hover span {background-color: #CCC!important}
+.MathJax_MenuClose:hover:focus {outline: none}
+</style><style type="text/css">.MathJax_Preview .MJXf-math {color: inherit!important}
+</style><style type="text/css">.MJX_Assistive_MathML {position: absolute!important; top: 0; left: 0; clip: rect(1px, 1px, 1px, 1px); padding: 1px 0 0 0!important; border: 0!important; height: 1px!important; width: 1px!important; overflow: hidden!important; display: block!important; -webkit-touch-callout: none; -webkit-user-select: none; -khtml-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none}
+.MJX_Assistive_MathML.MJX_Assistive_MathML_Block {width: 100%!important}
+</style><style type="text/css">#MathJax_Zoom {position: absolute; background-color: #F0F0F0; overflow: auto; display: block; z-index: 301; padding: .5em; border: 1px solid black; margin: 0; font-weight: normal; font-style: normal; text-align: left; text-indent: 0; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; -webkit-box-sizing: content-box; -moz-box-sizing: content-box; box-sizing: content-box; box-shadow: 5px 5px 15px #AAAAAA; -webkit-box-shadow: 5px 5px 15px #AAAAAA; -moz-box-shadow: 5px 5px 15px #AAAAAA; -khtml-box-shadow: 5px 5px 15px #AAAAAA; filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true')}
+#MathJax_ZoomOverlay {position: absolute; left: 0; top: 0; z-index: 300; display: inline-block; width: 100%; height: 100%; border: 0; padding: 0; margin: 0; background-color: white; opacity: 0; filter: alpha(opacity=0)}
+#MathJax_ZoomFrame {position: relative; display: inline-block; height: 0; width: 0}
+#MathJax_ZoomEventTrap {position: absolute; left: 0; top: 0; z-index: 302; display: inline-block; border: 0; padding: 0; margin: 0; background-color: white; opacity: 0; filter: alpha(opacity=0)}
+</style><style type="text/css">.MathJax_Preview {color: #888; display: contents}
+#MathJax_Message {position: fixed; left: 1em; bottom: 1.5em; background-color: #E6E6E6; border: 1px solid #959595; margin: 0px; padding: 2px 8px; z-index: 102; color: black; font-size: 80%; width: auto; white-space: nowrap}
+#MathJax_MSIE_Frame {position: absolute; top: 0; left: 0; width: 0px; z-index: 101; border: 0px; margin: 0px; padding: 0px}
+.MathJax_Error {color: #CC0000; font-style: italic}
+</style><style type="text/css">.MJXp-script {font-size: .8em}
+.MJXp-right {-webkit-transform-origin: right; -moz-transform-origin: right; -ms-transform-origin: right; -o-transform-origin: right; transform-origin: right}
+.MJXp-bold {font-weight: bold}
+.MJXp-italic {font-style: italic}
+.MJXp-scr {font-family: MathJax_Script,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-frak {font-family: MathJax_Fraktur,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-sf {font-family: MathJax_SansSerif,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-cal {font-family: MathJax_Caligraphic,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-mono {font-family: MathJax_Typewriter,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-largeop {font-size: 150%}
+.MJXp-largeop.MJXp-int {vertical-align: -.2em}
+.MJXp-math {display: inline-block; line-height: 1.2; text-indent: 0; font-family: 'Times New Roman',Times,STIXGeneral,serif; white-space: nowrap; border-collapse: collapse}
+.MJXp-display {display: block; text-align: center; margin: 1em 0}
+.MJXp-math span {display: inline-block}
+.MJXp-box {display: block!important; text-align: center}
+.MJXp-box:after {content: " "}
+.MJXp-rule {display: block!important; margin-top: .1em}
+.MJXp-char {display: block!important}
+.MJXp-mo {margin: 0 .15em}
+.MJXp-mfrac {margin: 0 .125em; vertical-align: .25em}
+.MJXp-denom {display: inline-table!important; width: 100%}
+.MJXp-denom > * {display: table-row!important}
+.MJXp-surd {vertical-align: top}
+.MJXp-surd > * {display: block!important}
+.MJXp-script-box > *  {display: table!important; height: 50%}
+.MJXp-script-box > * > * {display: table-cell!important; vertical-align: top}
+.MJXp-script-box > *:last-child > * {vertical-align: bottom}
+.MJXp-script-box > * > * > * {display: block!important}
+.MJXp-mphantom {visibility: hidden}
+.MJXp-munderover, .MJXp-munder {display: inline-table!important}
+.MJXp-over {display: inline-block!important; text-align: center}
+.MJXp-over > * {display: block!important}
+.MJXp-munderover > *, .MJXp-munder > * {display: table-row!important}
+.MJXp-mtable {vertical-align: .25em; margin: 0 .125em}
+.MJXp-mtable > * {display: inline-table!important; vertical-align: middle}
+.MJXp-mtr {display: table-row!important}
+.MJXp-mtd {display: table-cell!important; text-align: center; padding: .5em 0 0 .5em}
+.MJXp-mtr > .MJXp-mtd:first-child {padding-left: 0}
+.MJXp-mtr:first-child > .MJXp-mtd {padding-top: 0}
+.MJXp-mlabeledtr {display: table-row!important}
+.MJXp-mlabeledtr > .MJXp-mtd:first-child {padding-left: 0}
+.MJXp-mlabeledtr:first-child > .MJXp-mtd {padding-top: 0}
+.MJXp-merror {background-color: #FFFF88; color: #CC0000; border: 1px solid #CC0000; padding: 1px 3px; font-style: normal; font-size: 90%}
+.MJXp-scale0 {-webkit-transform: scaleX(.0); -moz-transform: scaleX(.0); -ms-transform: scaleX(.0); -o-transform: scaleX(.0); transform: scaleX(.0)}
+.MJXp-scale1 {-webkit-transform: scaleX(.1); -moz-transform: scaleX(.1); -ms-transform: scaleX(.1); -o-transform: scaleX(.1); transform: scaleX(.1)}
+.MJXp-scale2 {-webkit-transform: scaleX(.2); -moz-transform: scaleX(.2); -ms-transform: scaleX(.2); -o-transform: scaleX(.2); transform: scaleX(.2)}
+.MJXp-scale3 {-webkit-transform: scaleX(.3); -moz-transform: scaleX(.3); -ms-transform: scaleX(.3); -o-transform: scaleX(.3); transform: scaleX(.3)}
+.MJXp-scale4 {-webkit-transform: scaleX(.4); -moz-transform: scaleX(.4); -ms-transform: scaleX(.4); -o-transform: scaleX(.4); transform: scaleX(.4)}
+.MJXp-scale5 {-webkit-transform: scaleX(.5); -moz-transform: scaleX(.5); -ms-transform: scaleX(.5); -o-transform: scaleX(.5); transform: scaleX(.5)}
+.MJXp-scale6 {-webkit-transform: scaleX(.6); -moz-transform: scaleX(.6); -ms-transform: scaleX(.6); -o-transform: scaleX(.6); transform: scaleX(.6)}
+.MJXp-scale7 {-webkit-transform: scaleX(.7); -moz-transform: scaleX(.7); -ms-transform: scaleX(.7); -o-transform: scaleX(.7); transform: scaleX(.7)}
+.MJXp-scale8 {-webkit-transform: scaleX(.8); -moz-transform: scaleX(.8); -ms-transform: scaleX(.8); -o-transform: scaleX(.8); transform: scaleX(.8)}
+.MJXp-scale9 {-webkit-transform: scaleX(.9); -moz-transform: scaleX(.9); -ms-transform: scaleX(.9); -o-transform: scaleX(.9); transform: scaleX(.9)}
+.MathJax_PHTML .noError {vertical-align: ; font-size: 90%; text-align: left; color: black; padding: 1px 3px; border: 1px solid}
+</style><script src="./Dashboard Gapminder_files/typedarray.min.js.descarga"></script><link href="./Dashboard Gapminder_files/crosstalk.min.css" rel="stylesheet" type="text/css"><script src="./Dashboard Gapminder_files/crosstalk.min.js.descarga"></script><link href="./Dashboard Gapminder_files/plotly-htmlwidgets.css" rel="stylesheet" type="text/css"><script src="./Dashboard Gapminder_files/plotly-latest.min.js.descarga"></script><style id="plotly.js-style-global"></style><style type="text/css" media="print">.tableFloatingHeader{display:none !important;}.tableFloatingHeaderOriginal{position:static !important;}</style><style id="plotly.js-style-modebar-82e7e5"></style></head>
+<body data-new-gr-c-s-check-loaded="14.1324.0" data-gr-ext-installed="" style="padding-top: 58.8px;"><div id="MathJax_Message" style="display: none;"></div>
+  <div style="height: 100%;">
+    <div class="shiny-panel-conditional" data-display-if="!output.__reactivedoc__" data-ns-prefix="">
+      <div id="rmd_loader_wrapper">
+        <div id="rmd_loader" style="">
+          <p>Please wait...</p>
+          <img src="./Dashboard Gapminder_files/rmd_loader.gif">
+        </div>
+      </div>
+    </div>
+    <div id="__reactivedoc__" class="shiny-html-output shiny-bound-output" aria-live="polite" style="height: 100%;">
+
+
+
+
+
+<div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+<div class="container-fluid">
+<div class="navbar-header">
+
+<span class="navbar-logo pull-left">
+  
+</span>
+<span class="navbar-brand">
+  Dashboard Gapminder
+  <span class="navbar-author">
+        </span>
+</span>
+
+
+
+</div>
+<!--/.nav-collapse-->
+</div><!--/.container-->
+</div><!--/.navbar-->
+
+<script type="text/javascript">
+
+
+var FlexDashboard = (function () {
+
+  // initialize options
+  var _options = {};
+
+  var FlexDashboard = function() {
+
+    // default options
+    _options = $.extend(_options, {
+      theme: "cosmo",
+      fillPage: false,
+      orientation: 'columns',
+      storyboard: false,
+      defaultFigWidth: 576,
+      defaultFigHeight: 461,
+      defaultFigWidthMobile: 360,
+      defaultFigHeightMobile: 461,
+      isMobile: false,
+      isPortrait: false,
+      resize_reload: true
+    });
+  };
+
+  function init(options) {
+
+    // extend default options
+    $.extend(true, _options, options);
+
+    // add ids to sections that don't have them (pandoc won't assign ids
+    // to e.g. sections with titles consisting of only chinese characters)
+    var nextId = 1;
+    $('.level1:not([id]),.level2:not([id]),.level3:not([id])').each(function() {
+      $(this).attr('id', 'dashboard-' + nextId++);
+    });
+
+    // find navbar items
+    var navbarItems = $('#flexdashboard-navbar');
+    if (navbarItems.length)
+      navbarItems = JSON.parse(navbarItems.html());
+    addNavbarItems(navbarItems);
+
+    // find the main dashboard container
+    var dashboardContainer = $('#dashboard-container');
+
+    // resolve mobile classes
+    resolveMobileClasses(dashboardContainer);
+
+    // one time global initialization for components
+    componentsInit(dashboardContainer);
+
+    // look for a global sidebar
+    var globalSidebar = dashboardContainer.find(".section.level1.sidebar");
+    if (globalSidebar.length > 0) {
+
+      // global layout for fullscreen displays
+      if (!isMobilePhone()) {
+
+         // hoist it up to the top level
+         globalSidebar.insertBefore(dashboardContainer);
+
+         // lay it out (set width/positions)
+         layoutSidebar(globalSidebar, dashboardContainer);
+
+      // tuck sidebar into first page for mobile phones
+      } else {
+
+        // convert it into a level3 section
+        globalSidebar.removeClass('sidebar');
+        globalSidebar.removeClass('level1');
+        globalSidebar.addClass('level3');
+        var h1 = globalSidebar.children('h1');
+        var h3 = $('<h3></h3>');
+        h3.append(h1.contents());
+        h3.insertBefore(h1);
+        h1.detach();
+
+        // move it into the first page
+        var page = dashboardContainer.find('.section.level1').first();
+        if (page.length > 0)
+          page.prepend(globalSidebar);
+      }
+    }
+
+    // look for pages to layout
+    var pages = $('div.section.level1');
+    if (pages.length > 0) {
+
+        // find the navbar and collapse on clicked
+        var navbar = $('#navbar');
+        navbar.on("click", "a[data-toggle!=dropdown]", null, function () {
+           navbar.collapse('hide');
+        });
+
+        // envelop the dashboard container in a tab content div
+        dashboardContainer.wrapInner('<div class="tab-content"></div>');
+
+        pages.each(function(index) {
+
+          // lay it out
+          layoutDashboardPage($(this));
+
+          // add it to the navbar
+          addToNavbar($(this), index === 0);
+
+        });
+
+    } else {
+
+      // remove the navbar and navbar button if we don't
+      // have any navbuttons
+      if (navbarItems.length === 0) {
+        $('#navbar').remove();
+        $('#navbar-button').remove();
+      }
+
+      // add the storyboard class if requested
+      if (_options.storyboard)
+        dashboardContainer.addClass('storyboard');
+
+      // layout the entire page
+      layoutDashboardPage(dashboardContainer);
+    }
+
+    // if we are in shiny we need to trigger a window resize event to
+    // force correct layout of shiny-bound-output elements
+    if (isShinyDoc())
+      $(window).trigger('resize');
+
+    // make main components visible
+    $('.section.sidebar').css('visibility', 'visible');
+    dashboardContainer.css('visibility', 'visible');
+
+    // handle location hash
+    handleLocationHash();
+
+    // intialize prism highlighting
+    initPrismHighlighting();
+
+    // record mobile and orientation state then register a handler
+    // to refresh if resize_reload is set to true and it changes
+    _options.isMobile = isMobilePhone();
+    _options.isPortrait = isPortrait();
+    if (_options.resize_reload) {
+      $(window).on('resize', function() {
+        if (_options.isMobile !== isMobilePhone() ||
+            _options.isPortrait !== isPortrait()) {
+          window.location.reload();
+        }
+      });
+    } else {
+      // if in desktop mode and resizing to mobile, make sure the heights are 100%
+      // This enforces what `fillpage.css` does for "wider" pages.
+      // Since we are not reloading once the page becomes small, we need to force the height to 100%
+      // This is a new situation introduced when `_options.resize_reload` is `false`
+      if (! _options.isMobile) {
+        // only add if `fillpage.css` was added in the first place
+        if (_options.fillPage) {
+          // fillpage.css
+          $("html,body,#dashboard").css("height", "100%");
+        }
+      }
+    }
+    // trigger layoutcomplete event
+    dashboardContainer.trigger('flexdashboard:layoutcomplete');
+  }
+
+  function resolveMobileClasses(dashboardContainer) {
+     // add top level layout class
+    dashboardContainer.addClass(isMobilePhone() ? 'mobile-layout' :
+                                                  'desktop-layout');
+
+    // look for .mobile sections and add .no-mobile to their peers
+    var mobileSections = $('.section.mobile');
+    mobileSections.each(function() {
+       var id = $(this).attr('id');
+       var nomobileId = id.replace(/-\d+$/, '');
+       $('#' + nomobileId).addClass('no-mobile');
+    });
+  }
+
+  function addNavbarItems(navbarItems) {
+
+    var navbarLeft = $('ul.navbar-left');
+    var navbarRight = $('ul.navbar-right');
+
+    for (var i = 0; i<navbarItems.length; i++) {
+
+      // get the item
+      var item = navbarItems[i];
+
+      // determine the container
+      var container = null;
+      if (item.align === "left")
+        container = navbarLeft;
+      else
+        container = navbarRight;
+
+      // navbar menu if we have multiple items
+      if (item.items) {
+        var menu = navbarMenu(null, item.icon, item.title, container);
+        for (var j = 0; j<item.items.length; j++) {
+          var subItem = item.items[j];
+          var li = $('<li></li>');
+          var a = navbarLink(subItem.icon, subItem.title, subItem.href, subItem.target);
+          a.removeClass("nav-link").addClass("dropdown-item");
+          li.append(a);
+          menu.append(li);
+        }
+      } else {
+        var li = $('<li class="nav-item"></li>');
+        li.append(navbarLink(item.icon, item.title, item.href, item.target));
+        container.append(li);
+      }
+    }
+  }
+
+  // create or get a reference to an existing dropdown menu
+  function navbarMenu(id, icon, title, container) {
+    var existingMenu = [];
+    if (id)
+      existingMenu = container.children('#' + id);
+    if (existingMenu.length > 0) {
+      return existingMenu.children('ul');
+    } else {
+      var li = $('<li class="nav-item"></li>');
+      if (id)
+        li.attr('id', id);
+      li.addClass('dropdown');
+      // auto add "Share" title on mobile if necessary
+      if (!title && icon && (icon === "fa-share-alt") && isMobilePhone())
+        title = "Share";
+      if (title) {
+        title = title + ' <span class="caret"></span>';
+      }
+      var a = navbarLink(icon, title, "#");
+      a.addClass('dropdown-toggle');
+      a.attr('data-toggle', 'dropdown');
+      a.attr('data-bs-toggle', 'dropdown');
+      a.attr('role', 'button');
+      a.attr('aria-expanded', 'false');
+      li.append(a);
+      var ul = $('<ul class="dropdown-menu"></ul>');
+      ul.attr('role', 'menu');
+      li.append(ul);
+      container.append(li);
+      return ul;
+    }
+  }
+
+  function addToNavbar(page, active) {
+
+    // capture the id and data-icon attribute (if any)
+    var id = page.attr('id');
+    var icon = page.attr('data-icon');
+    var navmenu = page.attr('data-navmenu');
+    var navmenuIcon = page.attr('data-navmenu-icon');
+
+    // get hidden state (transfer this to navbar)
+    var hidden = page.hasClass('hidden');
+    page.removeClass('hidden');
+
+    // sanitize the id for use with bootstrap tabs
+    id = id.replace(/[.\/?&!#<>]/g, '').replace(/\s/g, '_');
+    page.attr('id', id);
+
+    // get the wrapper
+    var wrapper = page.closest('.dashboard-page-wrapper');
+
+    // move the id to the wrapper
+    page.removeAttr('id');
+    wrapper.attr('id', id);
+
+    // add the tab-pane class to the wrapper
+    wrapper.addClass('tab-pane');
+
+    // get a reference to the h1, discover its inner contens, then detach it
+    var h1 = wrapper.find('h1').first();
+    var title = h1.contents();
+    h1.detach();
+
+    // create a navbar item
+    var li = $('<li></li>');
+    var a = navbarLink(icon, title, '#' + id);
+    a.attr('data-toggle', 'tab');
+    a.attr('data-bs-toggle', 'tab');
+    li.append(a);
+
+    // add it to the navbar (or navbar menu if specified)
+    var container = $('ul.navbar-left');
+    if (navmenu) {
+      var menuId = navmenu.replace(/\s+/g, '');
+      var menu = navbarMenu(menuId, navmenuIcon, navmenu, container);
+      li.find("> a").removeClass("nav-link").addClass("dropdown-item");
+      menu.append(li);
+    } else {
+      li.addClass("nav-item")
+      container.append(li);
+    }
+
+    // mark active tab and corresponding nav menu item
+    if (active)
+      $(a).tab("show");
+
+    // hide it if requested
+    if (hidden)
+      li.addClass('hidden');
+  }
+
+  function navbarLink(icon, title, href, target) {
+
+    var a = $('<a class="nav-link"></a>');
+    if (icon) {
+
+      // get the name of the icon set and icon
+      var dashPos = icon.indexOf("-");
+      var iconSet = null;
+      var iconSplit = icon.split(" ");
+      if (iconSplit.length > 1) {
+        iconSet = iconSplit[0];
+        icon = iconSplit.slice(1).join(" ");
+      } else {
+        iconSet = icon.substring(0, dashPos);
+      }
+      var iconName = icon.substring(dashPos + 1);
+
+      // create the icon
+      var iconElement = $('<span class="' + iconSet + ' ' + icon + '"></span>');
+      if (title)
+        iconElement.css('margin-right', '7px');
+      a.append(iconElement);
+      // if href is null see if we can auto-generate based on icon (e.g. social)
+      if (!href)
+        maybeGenerateLinkFromIcon(iconName, a);
+    }
+    if (title)
+      a.append(title);
+
+    // add the href.
+    if (href) {
+      if (href === "source_embed") {
+        a.attr('href', '#');
+        a.attr('data-featherlight', "#flexdashboard-source-code");
+        a.featherlight({
+            beforeOpen: function(event){
+              $('body').addClass('unselectable');
+            },
+            afterClose: function(event){
+              $('body').removeClass('unselectable');
+            }
+        });
+      } else {
+        a.attr('href', href);
+      }
+    }
+
+    // add the arget
+    if (target)
+      a.attr('target', target);
+
+    return a;
+  }
+
+  // auto generate a link from an icon name (e.g. twitter) when possible
+  function maybeGenerateLinkFromIcon(iconName, a) {
+
+     var serviceLinks = {
+      "twitter": "https://twitter.com/share?text=" + encodeURIComponent(document.title) + "&url="+encodeURIComponent(location.href),
+      "facebook": "https://www.facebook.com/sharer/sharer.php?u="+encodeURIComponent(location.href),
+      "linkedin": "https://www.linkedin.com/shareArticle?mini=true&url="+encodeURIComponent(location.href) + "&title=" + encodeURIComponent(document.title),
+      "pinterest": "https://pinterest.com/pin/create/link/?url="+encodeURIComponent(location.href) + "&description=" + encodeURIComponent(document.title)
+    };
+
+    var makeSocialLink = function(a, href) {
+      a.attr('href', '#');
+      a.on('click', function(e) {
+        e.preventDefault();
+        window.open(href);
+      });
+    };
+
+    $.each(serviceLinks, function(key, value) {
+      if (iconName.indexOf(key) !== -1)
+        makeSocialLink(a, value);
+    });
+  }
+
+  // layout a dashboard page
+  function layoutDashboardPage(page) {
+
+    // use a page wrapper so that free form content above the
+    // dashboard appears at the top rather than the side (as it
+    // would without the wrapper in a column orientation)
+    var wrapper = $('<div class="dashboard-page-wrapper"></div>');
+    page.wrap(wrapper);
+
+    // if there are no level2 or level3 headers synthesize a level3
+    // header to contain the (e.g. frame it, scroll container, etc.)
+    var headers = page.find('h2,h3');
+    if (headers.length === 0)
+      page.wrapInner('<div class="section level3"></div>');
+
+    // hoist up any content before level 2 or level 3 headers
+    var children = page.children();
+    children.each(function(index) {
+      if ($(this).hasClass('level2') || $(this).hasClass('level3'))
+        return false;
+      $(this).insertBefore(page);
+    });
+
+    // determine orientation and fillPage behavior for distinct media
+    var orientation, fillPage, storyboard;
+
+    // media: mobile phone
+    if (isMobilePhone()) {
+
+      // if there is a sidebar we need to ensure it's content
+      // is properly framed as an h3
+      var sidebar = page.find('.section.sidebar');
+      sidebar.removeClass('sidebar');
+      sidebar.wrapInner('<div class="section level3"></div>');
+      var h2 = sidebar.find('h2');
+      var h3 = $('<h3></h3>');
+      h3.append(h2.contents());
+      h3.insertBefore(h2);
+      h2.detach();
+
+      // wipeout h2 elements then enclose them in a single h2
+      var level2 = page.find('div.section.level2');
+      level2.each(function() {
+        level2.children('h2').remove();
+        level2.children().unwrap();
+      });
+      page.wrapInner('<div class="section level2"></div>');
+
+      // substitute mobile images
+      if (isPortrait()) {
+        var mobileFigures = $('img.mobile-figure');
+        mobileFigures.each(function() {
+          // get the src (might be base64 encoded)
+          var src = $(this).attr('src');
+
+          // find it's peer
+          var id = $(this).attr('data-mobile-figure-id');
+          var img = $('img[data-figure-id=' + id + "]");
+          img.attr('src', src)
+             .attr('width', _options.defaultFigWidthMobile)
+             .attr('height', _options.defaultFigHeightMobile);
+        });
+      }
+
+      // hoist storyboard commentary into it's own section
+      if (page.hasClass('storyboard')) {
+        var commentaryHR = page.find('div.section.level3 hr');
+        commentaryHR.each(function() {
+          var commentary = $(this).nextAll().detach();
+          var commentarySection = $('<div class="section level3"></div>');
+          commentarySection.append(commentary);
+          commentarySection.insertAfter($(this).closest('div.section.level3'));
+          $(this).remove();
+        });
+      }
+
+      // force a non full screen layout by columns
+      orientation = _options.orientation = 'columns';
+      fillPage = _options.fillPage = false;
+      storyboard = _options.storyboard = false;
+
+    // media: desktop
+    } else {
+
+      // determine orientation
+      orientation = page.attr('data-orientation');
+      if (orientation !== 'rows' && orientation != 'columns')
+        orientation = _options.orientation;
+
+      // determine storyboard mode
+      storyboard = page.hasClass('storyboard');
+
+      // fillPage based on options (force for storyboard)
+      fillPage = _options.fillPage || storyboard;
+
+      // handle sidebar
+      var sidebar = page.find('.section.level2.sidebar');
+      if (sidebar.length > 0)
+        layoutSidebar(sidebar, page);
+    }
+
+    // give it and it's parent divs height: 100% if we are in fillPage mode
+    if (fillPage) {
+      page.addClass('vertical-layout-fill');
+      page.css('height', '100%');
+      page.parents('div').css('height', '100%');
+    } else {
+      page.addClass('vertical-layout-scroll');
+    }
+
+    // perform the layout
+    if (storyboard)
+      layoutPageAsStoryboard(page);
+    else if (orientation === 'rows')
+      layoutPageByRows(page, fillPage);
+    else if (orientation === 'columns')
+      layoutPageByColumns(page, fillPage);
+  }
+
+  function layoutSidebar(sidebar, content) {
+
+    // get it out of the header hierarchy
+    sidebar = sidebar.first();
+    if (sidebar.hasClass('level1')) {
+      sidebar.removeClass('level1');
+      sidebar.children('h1').remove();
+    } else if (sidebar.hasClass('level2')) {
+      sidebar.removeClass('level2');
+      sidebar.children('h2').remove();
+    }
+
+    // determine width
+    var sidebarWidth = isTablet() ? 220 : 250;
+    var dataWidth = parseInt(sidebar.attr('data-width'));
+    if (dataWidth)
+      sidebarWidth = dataWidth;
+
+    // set the width and shift the page right to accomodate the sidebar
+    sidebar.css('width', sidebarWidth + 'px');
+    content.css('padding-left', sidebarWidth + 'px');
+
+    // wrap it's contents in a form
+    sidebar.wrapInner($('<form></form>'));
+  }
+
+  function layoutPageAsStoryboard(page) {
+
+    // create storyboard navigation
+    var nav = $('<div class="storyboard-nav"></div>');
+
+    // add navigation buttons
+    var prev = $('<button class="sbprev"><i class="fa fa-angle-left"></i></button>');
+    nav.append(prev);
+    var next= $('<button class="sbnext"><i class="fa fa-angle-right"></i></button>');
+    nav.append(next);
+
+    // add navigation frame
+    var frameList = $('<div class="sbframelist"></div>');
+    nav.append(frameList);
+    var ul = $('<ul></ul>');
+    frameList.append(ul);
+
+     // find all the level3 sections (those are the storyboard frames)
+    var frames = page.find('div.section.level3');
+    frames.each(function() {
+
+      // mark it
+      $(this).addClass('sbframe');
+
+      // divide it into chart content and (optional) commentary
+      $(this).addClass('dashboard-column-orientation');
+
+      // stuff the chart into it's own div w/ flex
+      $(this).wrapInner('<div class="sbframe-component"></div>');
+      setFlex($(this), 1);
+      var frame = $(this).children('.sbframe-component');
+
+      // extract the title from the h3
+      var li = $('<li></li>');
+      var h3 = frame.children('h3');
+      li.append(h3.contents());
+      h3.detach();
+      ul.append(li);
+
+      // extract commentary
+      var hr = frame.children('hr');
+      if (hr.length) {
+        var commentary = hr.nextAll().detach();
+        hr.remove();
+        var commentaryFrame = $('<div class="sbframe-commentary"></div>');
+        commentaryFrame.addClass('flowing-content-shim');
+        commentaryFrame.addClass('flowing-content-container');
+        commentaryFrame.append(commentary);
+        $(this).append(commentaryFrame);
+
+        // look for a data-commentary-width attribute
+        var commentaryWidth = $(this).attr('data-commentary-width');
+        if (commentaryWidth)
+          commentaryFrame.css('width', commentaryWidth + 'px');
+      }
+
+      // layout the chart (force flex)
+      var result = layoutChart(frame, true);
+
+      // ice the notes if there are none
+      if (!result.notes)
+        frame.find('.chart-notes').remove();
+
+      // set flex on chart
+      setFlex(frame, 1);
+    });
+
+    // create a div to hold all the frames
+    var frameContent = $('<div class="sbframe-content"></div>');
+    frameContent.addClass('dashboard-row-orientation');
+    frameContent.append(frames.detach());
+
+    // row orientation to stack nav and frame content
+    page.addClass('dashboard-row-orientation');
+    page.append(nav);
+    page.append(frameContent);
+    setFlex(frameContent, 1);
+
+    // initialize sly
+    var sly = new Sly(frameList, {
+    		horizontal: true,
+    		itemNav: 'basic',
+    		smart: true,
+    		activateOn: 'click',
+    		startAt: 0,
+    		scrollBy: 1,
+    		activatePageOn: 'click',
+    		speed: 200,
+    		moveBy: 600,
+    		dragHandle: true,
+    		dynamicHandle: true,
+    		clickBar: true,
+    		keyboardNavBy: 'items',
+    		next: next,
+    		prev: prev
+    	}).init();
+
+    // make first frame active
+    frames.removeClass('active');
+    frames.first().addClass('active');
+
+    // subscribe to frame changed events
+    sly.on('active', function (eventName, itemIndex) {
+      frames.removeClass('active');
+      frames.eq(itemIndex).addClass('active')
+                          .trigger('shown');
+    });
+  }
+
+  function layoutPageByRows(page, fillPage) {
+
+    // row orientation
+    page.addClass('dashboard-row-orientation');
+
+    // find all the level2 sections (those are the rows)
+    var rows = page.find('div.section.level2');
+
+    // if there are no level2 sections then treat the
+    // entire page as if it's a level 2 section
+    if (rows.length === 0) {
+      page.wrapInner('<div class="section level2"></div>');
+      rows = page.find('div.section.level2');
+    }
+
+    rows.each(function () {
+
+      // flags
+      var haveNotes = false;
+      var haveFlexHeight = true;
+
+      // remove the h2
+      $(this).children('h2').remove();
+
+      // check for a tabset
+      var isTabset = $(this).hasClass('tabset');
+      if (isTabset)
+        layoutTabset($(this));
+
+      // give it row layout semantics if it's not a tabset
+      if (!isTabset)
+        $(this).addClass('dashboard-row');
+
+      // find all of the level 3 subheads
+      var columns = $(this).find('div.section.level3');
+
+      // determine figureSizes sizes
+      var figureSizes = chartFigureSizes(columns);
+
+      // fixup the columns
+      columns.each(function(index) {
+
+        // layout the chart (force flex if we are in a tabset)
+        var result = layoutChart($(this), isTabset);
+
+        // update flexHeight state
+        if (!result.flex)
+          haveFlexHeight = false;
+
+        // update state
+        if (result.notes)
+          haveNotes = true;
+
+        // set the column flex based on the figure width
+        // (value boxes will just get the default figure width)
+        var chartWidth = figureSizes[index].width;
+        setFlex($(this), chartWidth + ' ' + chartWidth + ' 0px');
+
+      });
+
+      // remove empty chart note divs
+      if (isTabset)
+        $(this).find('.chart-notes').filter(function() {
+            return $(this).html() === "&nbsp;";
+        }).remove();
+      if (!haveNotes)
+        $(this).find('.chart-notes').remove();
+
+       // make it a flexbox row
+      if (haveFlexHeight)
+        $(this).addClass('dashboard-row-flex');
+
+      // now we can set the height on all the wrappers (based on maximum
+      // figure height + room for title and notes, or data-height on the
+      // container if specified). However, don't do this if there is
+      // no flex on any of the constituent columns
+      var flexHeight = null;
+      var dataHeight = parseInt($(this).attr('data-height'));
+      if (dataHeight)
+        flexHeight = adjustedHeight(dataHeight, columns.first());
+      else if (haveFlexHeight)
+        flexHeight = maxChartHeight(figureSizes, columns);
+      if (flexHeight) {
+        if (fillPage)
+          setFlex($(this), flexHeight + ' ' + flexHeight + ' 0px');
+        else {
+          $(this).css('height', flexHeight + 'px');
+          setFlex($(this), '0 0 ' + flexHeight + 'px');
+        }
+      }
+
+    });
+  }
+
+  function layoutPageByColumns(page, fillPage) {
+
+    // column orientation
+    page.addClass('dashboard-column-orientation');
+
+    // find all the level2 sections (those are the columns)
+    var columns = page.find('div.section.level2');
+
+    // if there are no level2 sections then treat the
+    // entire page as if it's a level 2 section
+    if (columns.length === 0) {
+      page.wrapInner('<div class="section level2"></div>');
+      columns = page.find('div.section.level2');
+    }
+
+    // layout each column
+    columns.each(function (index) {
+
+      // remove the h2
+      $(this).children('h2').remove();
+
+      // make it a flexbox column
+      $(this).addClass('dashboard-column');
+
+      // check for a tabset
+      var isTabset = $(this).hasClass('tabset');
+      if (isTabset)
+        layoutTabset($(this));
+
+      // find all the h3 elements
+      var rows = $(this).find('div.section.level3');
+
+      // get the figure sizes for the rows
+      var figureSizes = chartFigureSizes(rows);
+
+      // column flex is the max row width (or data-width if specified)
+      var flexWidth;
+      var dataWidth = parseInt($(this).attr('data-width'));
+      if (dataWidth)
+        flexWidth = dataWidth;
+      else
+        flexWidth = maxChartWidth(figureSizes);
+      setFlex($(this), flexWidth + ' ' + flexWidth + ' 0px');
+
+      // layout each chart
+      rows.each(function(index) {
+
+        // perform the layout
+        var result = layoutChart($(this), false);
+
+        // ice the notes if there are none
+        if (!result.notes)
+          $(this).find('.chart-notes').remove();
+
+        // set flex height based on figHeight, then adjust
+        if (result.flex) {
+          var chartHeight = figureSizes[index].height;
+          chartHeight = adjustedHeight(chartHeight, $(this));
+          if (fillPage)
+            setFlex($(this), chartHeight + ' ' + chartHeight + ' 0px');
+          else {
+            $(this).css('height', chartHeight + 'px');
+            setFlex($(this), chartHeight + ' ' + chartHeight + ' ' + chartHeight + 'px');
+          }
+        }
+      });
+    });
+  }
+
+  function chartFigureSizes(charts) {
+
+    // sizes
+    var figureSizes = new Array(charts.length);
+
+    // check each chart
+    charts.each(function(index) {
+
+      // start with default
+      figureSizes[index] = {
+        width: _options.defaultFigWidth,
+        height: _options.defaultFigHeight
+      };
+
+      // look for data-height or data-width then knit options
+      var dataWidth = parseInt($(this).attr('data-width'));
+      var dataHeight = parseInt($(this).attr('data-height'));
+      var knitrOptions = $(this).find('.knitr-options:first');
+      var knitrWidth, knitrHeight;
+      if (knitrOptions) {
+        knitrWidth = parseInt(knitrOptions.attr('data-fig-width'));
+        knitrHeight =  parseInt(knitrOptions.attr('data-fig-height'));
+      }
+
+      // width
+      if (dataWidth)
+        figureSizes[index].width = dataWidth;
+      else if (knitrWidth)
+        figureSizes[index].width = knitrWidth;
+
+      // height
+      if (dataHeight)
+        figureSizes[index].height = dataHeight;
+      else if (knitrHeight)
+        figureSizes[index].height = knitrHeight;
+    });
+
+    // return sizes
+    return figureSizes;
+  }
+
+  function maxChartHeight(figureSizes, charts) {
+
+    // first compute the maximum height
+    var maxHeight = _options.defaultFigHeight;
+    for (var i = 0; i<figureSizes.length; i++)
+      if (figureSizes[i].height > maxHeight)
+        maxHeight = figureSizes[i].height;
+
+    // now add offests for chart title and chart notes
+    if (charts.length)
+      maxHeight = adjustedHeight(maxHeight, charts.first());
+
+    return maxHeight;
+  }
+
+  function adjustedHeight(height, chart) {
+    if (chart.length > 0) {
+      var chartTitle = chart.find('.chart-title');
+      if (chartTitle.length)
+        height += chartTitle.first().outerHeight();
+      var chartNotes = chart.find('.chart-notes');
+      if (chartNotes.length)
+        height += chartNotes.first().outerHeight();
+    }
+    return height;
+  }
+
+  function maxChartWidth(figureSizes) {
+    var maxWidth = _options.defaultFigWidth;
+    for (var i = 0; i<figureSizes.length; i++)
+      if (figureSizes[i].width > maxWidth)
+        maxWidth = figureSizes[i].width;
+    return maxWidth;
+  }
+
+  // layout a chart
+  function layoutChart(chart, forceFlex) {
+
+    // state to return
+    var result = {
+      notes: false,
+      flex: false
+    };
+
+    // extract the title
+    var title = extractTitle(chart);
+
+    // find components that apply to this container
+    var components = componentsFind(chart);
+
+    // if it's a custom component then call it and return
+    var customComponents = componentsCustom(components);
+    if (customComponents.length) {
+      componentsLayout(customComponents, title, chart);
+      result.notes = false;
+      result.flex = forceFlex || componentsFlex(customComponents);
+      return result;
+    }
+
+    // put all the content in a chart wrapper div
+    chart.addClass('chart-wrapper');
+    chart.wrapInner('<div class="chart-stage"></div>');
+    var chartContent = chart.children('.chart-stage');
+
+    // flex the content if appropriate
+    result.flex = forceFlex || componentsFlex(components);
+    if (result.flex) {
+      // add flex classes
+      chart.addClass('chart-wrapper-flex');
+      chartContent.addClass('chart-stage-flex');
+
+      // additional shim to break out of flexbox sizing
+      chartContent.wrapInner('<div class="chart-shim"></div>');
+      chartContent = chartContent.children('.chart-shim');
+    }
+
+    // set custom data-padding attribute
+    var pad = chart.attr('data-padding');
+    if (pad) {
+      if (pad === "0")
+        chart.addClass('no-padding');
+      else {
+        pad = pad + 'px';
+        chartContent.css('left', pad)
+                    .css('top', pad)
+                    .css('right', pad)
+                    .css('bottom', pad)
+      }
+    }
+
+    // call compoents
+    componentsLayout(components, title, chartContent);
+
+    // also activate components on shiny output
+    findShinyOutput(chartContent).on('shiny:value',
+      function(event) {
+        var element = $(event.target);
+        setTimeout(function() {
+
+          // see if we opted out of flex based on our output (for shiny
+          // we can't tell what type of output we have until after the
+          // value is bound)
+          var components = componentsFind(element);
+          var flex = forceFlex || componentsFlex(components);
+          if (!flex) {
+            chart.css('height', "");
+            setFlex(chart, "");
+            chart.removeClass('chart-wrapper-flex');
+            chartContent.removeClass('chart-stage-flex');
+            chartContent.children().unwrap();
+          }
+
+          // perform layout
+          componentsLayout(components, title, element.parent());
+        }, 10);
+      });
+
+    // add the title
+    var chartTitle = $('<div class="chart-title"></div>');
+    chartTitle.append(title);
+    chart.prepend(chartTitle);
+
+    // add the notes section
+    var chartNotes = $('<div class="chart-notes"></div>');
+    chartNotes.html('&nbsp;');
+    chart.append(chartNotes);
+
+    // attempt to extract notes if we have a component
+    if (components.length)
+      result.notes = extractChartNotes(chartContent, chartNotes);
+
+    // return result
+    return result;
+  }
+
+  // build a tabset from a section div with the .tabset class
+  function layoutTabset(tabset) {
+
+    // check for fade option
+    var fade = tabset.hasClass("tabset-fade");
+    var pills = tabset.hasClass("tabset-pills");
+    var navClass = pills ? "nav-pills" : "nav-tabs";
+
+    // determine the heading level of the tabset and tabs
+    var match = tabset.attr('class').match(/level(\d) /);
+    if (match === null)
+      return;
+    var tabsetLevel = Number(match[1]);
+    var tabLevel = tabsetLevel + 1;
+
+    // find all subheadings immediately below
+    var tabs = tabset.find("div.section.level" + tabLevel);
+    if (!tabs.length)
+      return;
+
+    // create tablist and tab-content elements
+    var tabList = $('<ul class="nav ' + navClass + '" role="tablist"></ul>');
+    $(tabs[0]).before(tabList);
+    var tabContent = $('<div class="tab-content"></div>');
+    $(tabs[0]).before(tabContent);
+
+    // build the tabset
+    var activeTab = 0;
+    tabs.each(function(i) {
+
+      // get the tab div
+      var tab = $(tabs[i]);
+
+      // get the id then sanitize it for use with bootstrap tabs
+      var id = tab.attr('id');
+
+      // see if this is marked as the active tab
+      if (tab.hasClass('active'))
+        activeTab = i;
+
+      // sanitize the id for use with bootstrap tabs
+      id = id.replace(/[.\/?&!#<>]/g, '').replace(/\s/g, '_');
+      tab.attr('id', id);
+
+      // get the heading element within it and grab it's text
+      var heading = tab.find('h' + tabLevel + ':first');
+      var headingDom = heading.contents();
+
+      // build and append the tab list item
+      var a = $('<a role="tab" data-toggle="tab" data-bs-toggle="tab" class="nav-link"></a>');
+      a.append(headingDom);
+      a.attr('href', '#' + id);
+      a.attr('aria-controls', id);
+      var li = $('<li role="presentation" class="nav-item"></li>');
+      li.append(a);
+      tabList.append(li);
+
+      // set it's attributes
+      tab.attr('role', 'tabpanel');
+      tab.addClass('tab-pane');
+      tab.addClass('tabbed-pane');
+      tab.addClass('no-title');
+      if (fade)
+        tab.addClass('fade');
+
+      // move it into the tab content div
+      tab.detach().appendTo(tabContent);
+    });
+
+    // set active tab
+    $(tabList.children()[activeTab]).tab("show");
+    var active = $(tabContent.children('div.section')[activeTab]);
+    active.addClass('active');
+    if (fade)
+      active.addClass('in');
+
+    // add nav-tabs-custom
+    tabset.addClass('nav-tabs-custom');
+
+    // internal layout is dashboard-column with tab-content flexing
+    tabset.addClass('dashboard-column');
+    setFlex(tabContent, 1);
+  }
+
+  // one time global initialization for components
+  function componentsInit(dashboardContainer) {
+    for (var i=0; i<window.FlexDashboardComponents.length; i++) {
+      var component = window.FlexDashboardComponents[i];
+      if (component.init)
+        component.init(dashboardContainer);
+    }
+  }
+
+  // find components that apply within a container
+  function componentsFind(container) {
+
+    // look for components
+    var components = [];
+    for (var i=0; i<window.FlexDashboardComponents.length; i++) {
+      var component = window.FlexDashboardComponents[i];
+      if (component.find(container).length)
+        components.push(component);
+    }
+
+    // if there were none then use a special flowing content component
+    // that just adds a scrollbar in fillPage mode
+    if (components.length == 0) {
+      components.push({
+        find: function(container) {
+          return container;
+        },
+
+        flex: function(fillPage) {
+          return fillPage;
+        },
+
+        layout: function(title, container, element, fillPage) {
+          if (fillPage) {
+            container.addClass('flowing-content-shim');
+            container.addClass('flowing-content-container');
+          }
+        }
+      });
+    }
+
+    return components;
+  }
+
+  // if there is a custom component then pick it out
+  function componentsCustom(components) {
+    var customComponent = [];
+    for (var i=0; i<components.length; i++)
+      if (components[i].type === "custom") {
+        customComponent.push(components[i]);
+        break;
+      }
+    return customComponent;
+  }
+
+  // query all components for flex
+  function componentsFlex(components) {
+
+    // no components at all means no flex
+    if (components.length === 0)
+      return false;
+
+    // otherwise query components (assume true unless we see false)
+    var isMobile = isMobilePhone();
+    for (var i=0; i<components.length; i++)
+      if (components[i].flex && !components[i].flex(_options.fillPage))
+        return false;
+    return true;
+  }
+
+  // layout all components
+  function componentsLayout(components, title, container) {
+    var isMobile = isMobilePhone();
+    for (var i=0; i<components.length; i++) {
+      var element = components[i].find(container);
+      if (components[i].layout) {
+        // call layout (don't call other components if it returns false)
+        var result = components[i].layout(title, container, element, _options.fillPage);
+        if (result === false)
+          return;
+      }
+    }
+  }
+
+  // get a reference to the h3, discover it's inner html, and remove it
+  function extractTitle(container) {
+    var h3 = container.children('h3').first();
+    var title = '';
+    if (!container.hasClass('no-title'))
+      title = h3.contents();
+    h3.detach();
+    return title;
+  }
+
+  // extract chart notes
+  function extractChartNotes(chartContent, chartNotes) {
+    // look for a terminating blockquote or image caption
+    var blockquote = chartContent.children('blockquote:last-child');
+    var caption = chartContent.children('div.image-container')
+                              .children('p.caption');
+    if (blockquote.length) {
+      chartNotes.empty().append(blockquote.children('p:first-child').contents());
+      blockquote.remove();
+      return true;
+    } else if (caption.length) {
+      chartNotes.empty().append(caption.contents());
+      caption.remove();
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  function findShinyOutput(chartContent) {
+    return chartContent.find('.shiny-text-output, .shiny-html-output');
+  }
+
+  // safely detect rendering on a mobile phone
+  function isMobilePhone() {
+    try
+    {
+      return ! window.matchMedia("only screen and (min-width: 768px)").matches;
+    }
+    catch(e) {
+      return false;
+    }
+  }
+
+  function isFillPage() {
+    return _options.fillPage;
+  }
+
+  // detect portrait mode
+  function isPortrait() {
+    return ($(window).width() < $(window).height());
+  }
+
+  // safely detect rendering on a tablet
+  function isTablet() {
+    try
+    {
+      return window.matchMedia("only screen and (min-width: 769px) and (max-width: 992px)").matches;
+    }
+    catch(e) {
+      return false;
+    }
+  }
+
+  // test whether this is a shiny doc
+  function isShinyDoc() {
+    return (typeof(window.Shiny) !== "undefined" && !!window.Shiny.outputBindings);
+  }
+
+  // set flex using vendor specific prefixes
+  function setFlex(el, flex) {
+    el.css('-webkit-box-flex', flex)
+      .css('-webkit-flex', flex)
+      .css('-ms-flex', flex)
+      .css('flex', flex);
+  }
+
+  // support bookmarking of pages
+  function handleLocationHash() {
+
+    // restore tab/page from bookmark
+    var hash = window.decodeURIComponent(window.location.hash);
+    if (hash.length > 0) {
+      // Update the tab without .showPage() so that we don't change page history
+      $('ul.nav a[href="' + hash + '"]').tab('show');
+    }
+
+    // navigate to a tab when the history changes
+    window.addEventListener("popstate", function(e) {
+      var hash = window.decodeURIComponent(window.location.hash);
+      var activeTab = $('ul.nav a[href="' + hash + '"]');
+      if (activeTab.length) {
+        activeTab.tab('show');
+      } else {
+        // returning to the base page URL without a hash activates first tab
+        $('ul.nav a:first').tab('show');
+      }
+    });
+
+    // add a hash to the URL when the user clicks on a tab/page
+    $('.navbar-nav a[data-toggle="tab"]').on('click', function(e) {
+      var baseUrl = FlexDashboardUtils.urlWithoutHash(window.location.href);
+      var hash = FlexDashboardUtils.urlHash($(this).attr('href'));
+      var href = baseUrl + hash;
+      FlexDashboardUtils.setLocation(href);
+    });
+
+    // handle clicks of other links that should activate pages
+    var navPages = $('ul.navbar-nav li a[data-toggle=tab]');
+    navPages.each(function() {
+      var href =  $(this).attr('href');
+      var links = $('a[href="' + href + '"][data-toggle!=tab]');
+      links.each(function() {
+        $(this).on('click', function(e) {
+          window.FlexDashboardUtils.showPage(href);
+        });
+      });
+    });
+  }
+
+  // tweak Prism highlighting
+  function initPrismHighlighting() {
+
+    if (window.Prism) {
+      Prism.languages.insertBefore('r', 'comment', {
+        'heading': [
+          {
+            // title 1
+        	  // =======
+
+        	  // title 2
+        	  // -------
+        	  pattern: /\w+.*(?:\r?\n|\r)(?:====+|----+)/,
+            alias: 'operator'
+          },
+          {
+            // ### title 3
+            pattern: /(^\s*)###[^#].+/m,
+            lookbehind: true,
+            alias: 'operator'
+          }
+        ]
+      });
+
+      // prism highlight
+      Prism.highlightAll();
+    }
+  }
+
+  FlexDashboard.prototype = {
+    constructor: FlexDashboard,
+    init: init,
+    isMobilePhone: isMobilePhone,
+    isFillPage: isFillPage
+  };
+
+  return FlexDashboard;
+
+})();
+
+// utils
+window.FlexDashboardUtils = {
+  resizableImage: function(img) {
+    var src = img.attr('src');
+    var url = 'url("' + src + '")';
+    img.parent().css('background', url)
+                .css('background-size', 'contain')
+                .css('background-repeat', 'no-repeat')
+                .css('background-position', 'center')
+                .addClass('image-container');
+  },
+  setLocation: function(href) {
+    if (history && history.pushState) {
+      history.pushState(null, null, href);
+    } else {
+      window.location.replace(href);
+    }
+    setTimeout(function() {
+        window.scrollTo(0, 0);
+    }, 10);
+  },
+  showPage: function(href) {
+    $('ul.navbar-nav li a[href="' + href + '"]').tab('show');
+    var baseUrl = this.urlWithoutHash(window.location.href);
+    var loc = baseUrl + href;
+    this.setLocation(loc);
+  },
+  showLinkedValue: function(href) {
+    // check for a page link
+    if ($('ul.navbar-nav li a[data-toggle=tab][href="' + href + '"]').length > 0)
+      this.showPage(href);
+    else
+      window.open(href);
+  },
+  urlWithoutHash: function(url) {
+    var hashLoc = url.indexOf('#');
+    if (hashLoc != -1)
+      return url.substring(0, hashLoc);
+    else
+      return url;
+  },
+  urlHash: function(url) {
+    var hashLoc = url.indexOf('#');
+    if (hashLoc != -1)
+      return url.substring(hashLoc);
+    else
+      return "";
+  }
+};
+
+window.FlexDashboard = new FlexDashboard();
+
+// empty content
+window.FlexDashboardComponents.push({
+  find: function(container) {
+    if (container.find('p').length == 0)
+      return container;
+    else
+      return $();
+  }
+})
+
+// plot image
+window.FlexDashboardComponents.push({
+
+  find: function(container) {
+    return container.children('p')
+                    .children('img:only-child');
+  },
+
+  layout: function(title, container, element, fillPage) {
+    FlexDashboardUtils.resizableImage(element);
+  }
+});
+
+// plot image (figure style)
+window.FlexDashboardComponents.push({
+
+  find: function(container) {
+    return container.children('div.figure').children('img');
+  },
+
+  layout: function(title, container, element, fillPage) {
+    FlexDashboardUtils.resizableImage(element);
+  }
+});
+
+// htmlwidget
+window.FlexDashboardComponents.push({
+
+  init: function(dashboardContainer) {
+    // trigger "shown" after initial layout to force static htmlwidgets
+    // in runtime: shiny to be resized after the dom has been transformed
+    dashboardContainer.on('flexdashboard:layoutcomplete', function(event) {
+      setTimeout(function() {
+        dashboardContainer.trigger('shown');
+      }, 200);
+    });
+  },
+
+  find: function(container) {
+    return container.children('div[id^="htmlwidget-"],div.html-widget');
+  }
+});
+
+// gauge
+window.FlexDashboardComponents.push({
+
+  find: function(container) {
+    return container.children('div.html-widget.gauge');
+  },
+
+  flex: function(fillPage) {
+    return false;
+  },
+
+  layout: function(title, container, element, fillPage) {
+
+
+  }
+
+});
+
+// shiny output
+window.FlexDashboardComponents.push({
+  find: function(container) {
+    return container.children('div[class^="shiny-"]');
+  }
+});
+
+// bootstrap table
+window.FlexDashboardComponents.push({
+
+  find: function(container) {
+    var bsTable = container.find('table.table');
+    if (bsTable.length !== 0)
+      return bsTable;
+    else
+      return container.find('tr.header').parent('thead').parent('table');
+  },
+
+  flex: function(fillPage) {
+    return fillPage;
+  },
+
+  layout: function(title, container, element, fillPage) {
+
+    // alias variables
+    var bsTable = element;
+
+    // fixup xtable generated tables with a proper thead
+    var headerRow = bsTable.find('tbody > tr:first-child > th').parent();
+    if (headerRow.length > 0) {
+      var thead = $('<thead></thead>');
+      bsTable.prepend(thead);
+      headerRow.detach().appendTo(thead);
+    }
+
+    // improve appearance
+    container.addClass('bootstrap-table');
+
+    // for fill page provide scrolling w/ sticky headers
+    if (fillPage) {
+      // force scrollbar on overflow
+      container.addClass('flowing-content-shim');
+
+      // stable table headers when scrolling
+      bsTable.stickyTableHeaders({
+        scrollableArea: container
+      });
+    }
+  }
+});
+
+// embedded shiny app
+window.FlexDashboardComponents.push({
+
+  find: function(container) {
+    return container.find('iframe.shiny-frame');
+  },
+
+  flex: function(fillPage) {
+    return fillPage;
+  },
+
+  layout: function(title, container, element, fillPage) {
+    if (fillPage) {
+      element.attr('height', '100%');
+    } else {
+      // provide default height if necessary
+      var height = element.get(0).style.height;
+      if (!height)
+        height = element.attr('height');
+      if (!height)
+        element.attr('height', 500);
+    }
+  }
+});
+
+// shiny fillRow or fillCol
+window.FlexDashboardComponents.push({
+
+  find: function(container) {
+    return container.find('.flexfill-container');
+  },
+
+  flex: function(fillPage) {
+    return fillPage;
+  },
+
+  layout: function(title, container, element, fillPage) {
+    if (fillPage)
+      element.css('height', '100%');
+    else {
+      // provide default height if necessary
+      var height = element.get(0).style.height;
+      if (height === "100%" || height === "auto" || height === "initial" ||
+          height === "inherit" || !height) {
+        element.css('height', 500);
+      }
+    }
+  }
+});
+
+// valueBox
+window.FlexDashboardComponents.push({
+
+  type: "custom",
+
+  find: function(container) {
+    if (container.find('span.value-output, .shiny-valuebox-output').length)
+      return container;
+    else
+      return $();
+  },
+
+  flex: function(fillPage) {
+    return false;
+  },
+
+  layout: function(title, container, element, fillPage) {
+
+    // alias variables
+    var chartTitle = title;
+    var valueBox = element;
+
+    // add value-box class to container
+    container.addClass('value-box');
+
+    // value paragraph
+    var value = $('<p class="value"></p>');
+
+    // if we have shiny-text-output then just move it in
+    var valueOutputSpan = [];
+    var shinyOutput = valueBox.find('.shiny-valuebox-output').detach();
+    if (shinyOutput.length) {
+      valueBox.children().remove();
+      shinyOutput.html("&mdash;");
+      value.append(shinyOutput);
+    } else {
+      // extract the value (remove leading vector index)
+      var chartValue = valueBox.text().trim();
+      chartValue = chartValue.replace("[1] ", "");
+      valueOutputSpan = valueBox.find('span.value-output').detach();
+      valueBox.children().remove();
+      value.text(chartValue);
+    }
+
+    // caption
+    var caption = $('<p class="caption"></p>');
+    caption.append(chartTitle);
+
+    // build inner div for value box and add it
+    var inner = $('<div class="inner"></div>');
+    inner.append(value);
+    inner.append(caption);
+    valueBox.append(inner);
+
+    // add icon if specified
+    var icon = $('<div class="icon"><i></i></div>');
+    valueBox.append(icon);
+    function setIcon(chartIcon) {
+      var iconLib = "";
+      var iconSplit = chartIcon.split(" ");
+      if (iconSplit.length > 1) {
+        iconLib = iconSplit[0];
+        chartIcon = iconSplit.slice(1).join(" ");
+      } else {
+        var components = chartIcon.split("-");
+        if (components.length > 1)
+          iconLib = components[0];
+      }
+      icon.children('i').attr('class', iconLib + ' ' + chartIcon);
+    }
+    var chartIcon = valueBox.attr('data-icon');
+    if (chartIcon)
+      setIcon(chartIcon);
+
+    // handle data attributes in valueOutputSpan
+    function handleValueOutput(valueOutput) {
+
+      // caption
+      var dataCaption = valueOutput.attr('data-caption');
+      if (dataCaption)
+        caption.html(dataCaption);
+
+      // icon
+      var dataIcon = valueOutput.attr('data-icon');
+      if (dataIcon)
+        setIcon(dataIcon);
+
+      // If valueBox(color=) was an accent color, this attr should
+      // be populated with the accent color and the relevant CSS comes
+      // in through HTML dependencies
+      var dataColorAccent = valueOutput.attr('data-color-accent');
+      var valueBoxClasses = "value-box-" + (["primary", "info", "danger", "warning", "success"].join(" value-box-"));
+      if (dataColorAccent) {
+        valueBox.removeClass(valueBoxClasses);
+        valueBox.addClass('value-box-' + dataColorAccent);
+      }
+
+      // If valueBox(color=) was a CSS color, these other data-color-*
+      // attrs will be populated
+      var dataColor = valueOutput.attr('data-color');
+      if (dataColor) {
+        valueBox.removeClass(valueBoxClasses);
+        valueBox.css('background-color', dataColor);
+      }
+      var dataColorText = valueOutput.attr('data-color-text');
+      if (dataColorText) {
+        valueBox.find(".inner").css('color', dataColorText);
+      }
+      var dataColorIcon = valueOutput.attr('data-color-icon');
+      if (dataColorIcon) {
+        valueBox.find(".icon").css('color', dataColorIcon);
+      }
+
+      // url
+      var dataHref = valueOutput.attr('data-href');
+      if (dataHref) {
+        valueBox.addClass('linked-value');
+        valueBox.off('click.value-box');
+        valueBox.on('click.value-box', function(e) {
+          window.FlexDashboardUtils.showLinkedValue(dataHref);
+        });
+      }
+    }
+
+    // check for a valueOutputSpan
+    if (valueOutputSpan.length > 0) {
+      handleValueOutput(valueOutputSpan);
+    }
+
+    // if we have a shinyOutput then bind a listener to handle
+    // new valueOutputSpan values
+    shinyOutput.on('shiny:value',
+      function(event) {
+        var element = $(event.target);
+        setTimeout(function() {
+          var valueOutputSpan = element.find('span.value-output');
+          if (valueOutputSpan.length > 0)
+            handleValueOutput(valueOutputSpan);
+        }, 10);
+      }
+    );
+  }
+});
+</script>
+
+<div class="dashboard-page-wrapper" style="height: 100%;"><div id="dashboard-container" class="desktop-layout vertical-layout-fill dashboard-column-orientation" style="height: 100%; visibility: visible;">
+
+<div id="section-column" class="section level2 dashboard-column" data-width="650" style="flex: 650 650 0px;">
+
+<div class="knitr-options" data-fig-width="576" data-fig-height="460">
+
+</div>
+<div class="form-group shiny-input-container">
+<label class="control-label" id="variable_x-label" for="variable_x-selectized">Variable a comparar con la esperanza de vida:</label>
+<div>
+<select id="variable_x" class="shiny-input-select selectized shiny-bound-input" tabindex="-1" style="display: none;">
+<option value="income" selected="selected">Ingresos</option></select><div class="shiny-input-select selectize-control single plugin-selectize-plugin-a11y"><div class="selectize-input items has-options full has-items"><div class="item" data-value="income">Ingresos</div><input type="text" autocomplete="new-password" autofill="no" tabindex="" id="variable_x-selectized" role="combobox" aria-expanded="false" haspopup="listbox" aria-owns="fkf20x0yxy" style="width: 4px; opacity: 0; position: absolute; left: 0px;"></div><div class="single selectize-dropdown shiny-input-select plugin-selectize-plugin-a11y" style="display: none; visibility: visible; width: 100%; min-width: 300px; top: 34px; left: 0px;"><div class="selectize-dropdown-content" tabindex="-1" role="listbox" id="fkf20x0yxy"><div class="option selected" data-selectable="" data-value="income" role="option" id="pzeyotstiz">Ingresos</div><div class="option" data-selectable="" data-value="fertility" role="option" id="q2sb93aph6">Fertilidad</div></div></div></div>
+<script type="application/json" data-for="variable_x" data-nonempty="">{"plugins":["selectize-plugin-a11y"]}</script>
+</div>
+</div>
+<div class="form-group shiny-input-container">
+<label class="control-label" id="year-label" for="year">Selecciona un año:</label>
+<span class="irs irs--shiny js-irs-0 irs-with-grid"><span class="irs"><span class="irs-line" tabindex="0"></span><span class="irs-min" style="visibility: visible;">1,960</span><span class="irs-max" style="visibility: hidden;">2,024</span><span class="irs-from" style="visibility: hidden;">0</span><span class="irs-to" style="visibility: hidden;">0</span><span class="irs-single" style="left: 90.7438%;">2,024</span></span><span class="irs-grid" style="width: 92.6667%; left: 3.56667%;"><span class="irs-grid-pol" style="left: 0%"></span><span class="irs-grid-text js-grid-text-0" style="left: 0%; margin-left: -4.75417%;">1,960</span><span class="irs-grid-pol small" style="left: 7.29166666666667%"></span><span class="irs-grid-pol small" style="left: 3.645833333333335%"></span><span class="irs-grid-pol" style="left: 10.937500000000004%"></span><span class="irs-grid-text js-grid-text-1" style="left: 10.9375%; visibility: visible; margin-left: -4.75417%;">1,967</span><span class="irs-grid-pol small" style="left: 18.22916666666667%"></span><span class="irs-grid-pol small" style="left: 14.58333333333334%"></span><span class="irs-grid-pol" style="left: 21.875000000000007%"></span><span class="irs-grid-text js-grid-text-2" style="left: 21.875%; visibility: visible; margin-left: -4.75417%;">1,974</span><span class="irs-grid-pol small" style="left: 29.16666666666668%"></span><span class="irs-grid-pol small" style="left: 25.520833333333343%"></span><span class="irs-grid-pol" style="left: 32.812500000000014%"></span><span class="irs-grid-text js-grid-text-3" style="left: 32.8125%; visibility: visible; margin-left: -4.75417%;">1,981</span><span class="irs-grid-pol small" style="left: 40.10416666666668%"></span><span class="irs-grid-pol small" style="left: 36.45833333333335%"></span><span class="irs-grid-pol" style="left: 43.750000000000014%"></span><span class="irs-grid-text js-grid-text-4" style="left: 43.75%; margin-left: -4.75417%;">1,988</span><span class="irs-grid-pol small" style="left: 51.04166666666668%"></span><span class="irs-grid-pol small" style="left: 47.39583333333335%"></span><span class="irs-grid-pol" style="left: 54.687500000000014%"></span><span class="irs-grid-text js-grid-text-5" style="left: 54.6875%; visibility: visible; margin-left: -4.75417%;">1,995</span><span class="irs-grid-pol small" style="left: 61.97916666666669%"></span><span class="irs-grid-pol small" style="left: 58.33333333333335%"></span><span class="irs-grid-pol" style="left: 65.62500000000003%"></span><span class="irs-grid-text js-grid-text-6" style="left: 65.625%; visibility: visible; margin-left: -4.75417%;">2,002</span><span class="irs-grid-pol small" style="left: 72.9166666666667%"></span><span class="irs-grid-pol small" style="left: 69.27083333333336%"></span><span class="irs-grid-pol" style="left: 76.56250000000003%"></span><span class="irs-grid-text js-grid-text-7" style="left: 76.5625%; visibility: visible; margin-left: -4.75417%;">2,009</span><span class="irs-grid-pol small" style="left: 83.8541666666667%"></span><span class="irs-grid-pol small" style="left: 80.20833333333336%"></span><span class="irs-grid-pol" style="left: 87.50000000000003%"></span><span class="irs-grid-text js-grid-text-8" style="left: 87.5%; margin-left: -4.75417%;">2,016</span><span class="irs-grid-pol small" style="left: 94.7916666666667%"></span><span class="irs-grid-pol small" style="left: 91.14583333333336%"></span><span class="irs-grid-pol" style="left: 98.43750000000003%"></span><span class="irs-grid-text js-grid-text-9" style="left: 98.4375%; visibility: visible; margin-left: -4.75417%;">2,023</span><span class="irs-grid-pol small" style="left: 99.47916666666667%"></span><span class="irs-grid-pol small" style="left: 98.95833333333336%"></span><span class="irs-grid-pol" style="left: 100%"></span><span class="irs-grid-text js-grid-text-10" style="left: 100%; visibility: visible; margin-left: -4.75417%;">2,024</span></span><span class="irs-bar irs-bar--single" style="left: 0px; width: 96.3333%;"></span><span class="irs-shadow shadow-single" style="display: none;"></span><span class="irs-handle single" style="left: 92.6667%;"><i></i><i></i><i></i></span></span><input class="js-range-slider irs-hidden-input shiny-bound-input" id="year" data-skin="shiny" data-min="1960" data-max="2024" data-from="2024" data-step="1" data-grid="true" data-grid-num="9.14285714285714" data-grid-snap="false" data-prettify-separator="," data-prettify-enabled="true" data-keyboard="true" data-data-type="number" tabindex="-1" readonly="">
+</div>
+<div id="section-chart-a" class="section level3 chart-wrapper chart-wrapper-flex" style="flex: 491.8 491.8 0px;"><div class="chart-title">Chart A</div><div class="chart-stage chart-stage-flex"><div class="chart-shim">
+
+<div class="knitr-options" data-fig-width="576" data-fig-height="460">
+
+</div>
+<div class="plotly html-widget html-widget-output shiny-report-size shiny-report-theme html-fill-item shiny-bound-output js-plotly-plot" id="out1c9c604c66c55b0f" style="width: 100%; height: 400px; visibility: inherit;" aria-live="polite"><div class="plot-container plotly"><div class="user-select-none svg-container" style="position: relative; width: 967.6px; height: 436.55px;"><svg class="main-svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="967.6" height="436.55" style="background: rgb(255, 255, 255);"><defs id="defs-82e7e5"><g class="clips"><clippath id="clip82e7e5xyplot" class="plotclip"><rect width="917" height="353"></rect></clippath><clippath class="axesclip" id="clip82e7e5x"><rect x="44" y="0" width="917" height="436.55"></rect></clippath><clippath class="axesclip" id="clip82e7e5y"><rect x="0" y="41" width="967.6" height="353"></rect></clippath><clippath class="axesclip" id="clip82e7e5xy"><rect x="44" y="41" width="917" height="353"></rect></clippath></g><g class="gradients"></g><g class="patterns"></g></defs><g class="bglayer"><rect class="bg" x="44" y="41" width="917" height="353" style="fill: rgb(235, 235, 235); fill-opacity: 1; stroke-width: 0;"></rect></g><g class="draglayer cursor-crosshair"><g class="xy"><rect class="nsewdrag drag" data-subplot="xy" x="44" y="41" width="917" height="353" style="fill: transparent; stroke-width: 0; pointer-events: all;"></rect><rect class="nwdrag drag cursor-nw-resize" data-subplot="xy" x="24" y="21" width="20" height="20" style="fill: transparent; stroke-width: 0; pointer-events: all;"></rect><rect class="nedrag drag cursor-ne-resize" data-subplot="xy" x="961" y="21" width="20" height="20" style="fill: transparent; stroke-width: 0; pointer-events: all;"></rect><rect class="swdrag drag cursor-sw-resize" data-subplot="xy" x="24" y="394" width="20" height="20" style="fill: transparent; stroke-width: 0; pointer-events: all;"></rect><rect class="sedrag drag cursor-se-resize" data-subplot="xy" x="961" y="394" width="20" height="20" style="fill: transparent; stroke-width: 0; pointer-events: all;"></rect><rect class="ewdrag drag cursor-ew-resize" data-subplot="xy" x="135.7" y="394.5" width="733.6" height="20" style="fill: transparent; stroke-width: 0; pointer-events: all;"></rect><rect class="wdrag drag cursor-w-resize" data-subplot="xy" x="44" y="394.5" width="91.7" height="20" style="fill: transparent; stroke-width: 0; pointer-events: all;"></rect><rect class="edrag drag cursor-e-resize" data-subplot="xy" x="869.3000000000001" y="394.5" width="91.7" height="20" style="fill: transparent; stroke-width: 0; pointer-events: all;"></rect><rect class="nsdrag drag cursor-ns-resize" data-subplot="xy" x="23.5" y="76.30000000000001" width="20" height="282.40000000000003" style="fill: transparent; stroke-width: 0; pointer-events: all;"></rect><rect class="sdrag drag cursor-s-resize" data-subplot="xy" x="23.5" y="358.7" width="20" height="35.300000000000004" style="fill: transparent; stroke-width: 0; pointer-events: all;"></rect><rect class="ndrag drag cursor-n-resize" data-subplot="xy" x="23.5" y="41" width="20" height="35.300000000000004" style="fill: transparent; stroke-width: 0; pointer-events: all;"></rect></g></g><g class="layer-below"><g class="imagelayer"></g><g class="shapelayer"></g></g><g class="cartesianlayer"><g class="subplot xy"><g class="layer-subplot"><g class="shapelayer"></g><g class="imagelayer"></g></g><g class="minor-gridlayer"><g class="x"></g><g class="y"></g></g><g class="gridlayer"><g class="x"><path class="xgrid crisp" transform="translate(83.65,0)" d="M0,41v353" style="stroke: rgb(255, 255, 255); stroke-opacity: 1; stroke-width: 1px;"></path><path class="xgrid crisp" transform="translate(314.92,0)" d="M0,41v353" style="stroke: rgb(255, 255, 255); stroke-opacity: 1; stroke-width: 1px;"></path><path class="xgrid crisp" transform="translate(546.1800000000001,0)" d="M0,41v353" style="stroke: rgb(255, 255, 255); stroke-opacity: 1; stroke-width: 1px;"></path><path class="xgrid crisp" transform="translate(777.45,0)" d="M0,41v353" style="stroke: rgb(255, 255, 255); stroke-opacity: 1; stroke-width: 1px;"></path></g><g class="y"><path class="ygrid crisp" transform="translate(0,328.09)" d="M44,0h917" style="stroke: rgb(255, 255, 255); stroke-opacity: 1; stroke-width: 1px;"></path><path class="ygrid crisp" transform="translate(0,222.21)" d="M44,0h917" style="stroke: rgb(255, 255, 255); stroke-opacity: 1; stroke-width: 1px;"></path><path class="ygrid crisp" transform="translate(0,116.34)" d="M44,0h917" style="stroke: rgb(255, 255, 255); stroke-opacity: 1; stroke-width: 1px;"></path></g></g><g class="zerolinelayer"></g><path class="xlines-below"></path><path class="ylines-below"></path><g class="overlines-below"></g><g class="xaxislayer-below"></g><g class="yaxislayer-below"></g><g class="overaxes-below"></g><g class="plot" transform="translate(44,41)" clip-path="url(#clip82e7e5xyplot)"><g class="scatterlayer mlayer"><g class="trace scatter trace653e88" style="stroke-miterlimit: 2; opacity: 1;"><g class="fills"></g><g class="errorbars"></g><g class="lines"></g><g class="points"><path class="point" transform="translate(43.94,193.81)" d="M2.83,0A2.83,2.83 0 1,1 0,-2.83A2.83,2.83 0 0,1 2.83,0Z" style="opacity: 1; stroke-width: 1.88976px; fill: rgb(0, 0, 0); fill-opacity: 1; stroke: rgb(0, 0, 0); stroke-opacity: 1;"></path><path class="point" transform="translate(45.78,239.44)" d="M2.83,0A2.83,2.83 0 1,1 0,-2.83A2.83,2.83 0 0,1 2.83,0Z" style="opacity: 1; stroke-width: 1.88976px; fill: rgb(0, 0, 0); fill-opacity: 1; stroke: rgb(0, 0, 0); stroke-opacity: 1;"></path><path class="point" transform="translate(61.81,77.45)" d="M2.83,0A2.83,2.83 0 1,1 0,-2.83A2.83,2.83 0 0,1 2.83,0Z" style="opacity: 1; stroke-width: 1.88976px; fill: rgb(0, 0, 0); fill-opacity: 1; stroke: rgb(0, 0, 0); stroke-opacity: 1;"></path><path class="point" transform="translate(114.75,31.93)" d="M2.83,0A2.83,2.83 0 1,1 0,-2.83A2.83,2.83 0 0,1 2.83,0Z" style="opacity: 1; stroke-width: 1.88976px; fill: rgb(0, 0, 0); fill-opacity: 1; stroke: rgb(0, 0, 0); stroke-opacity: 1;"></path><path class="point" transform="translate(133.16,72.27)" d="M2.83,0A2.83,2.83 0 1,1 0,-2.83A2.83,2.83 0 0,1 2.83,0Z" style="opacity: 1; stroke-width: 1.88976px; fill: rgb(0, 0, 0); fill-opacity: 1; stroke: rgb(0, 0, 0); stroke-opacity: 1;"></path><path class="point" transform="translate(69.53,99.69)" d="M2.83,0A2.83,2.83 0 1,1 0,-2.83A2.83,2.83 0 0,1 2.83,0Z" style="opacity: 1; stroke-width: 1.88976px; fill: rgb(0, 0, 0); fill-opacity: 1; stroke: rgb(0, 0, 0); stroke-opacity: 1;"></path><path class="point" transform="translate(50.24,78.41)" d="M2.83,0A2.83,2.83 0 1,1 0,-2.83A2.83,2.83 0 0,1 2.83,0Z" style="opacity: 1; stroke-width: 1.88976px; fill: rgb(0, 0, 0); fill-opacity: 1; stroke: rgb(0, 0, 0); stroke-opacity: 1;"></path><path class="point" transform="translate(72.75,96.51)" d="M2.83,0A2.83,2.83 0 1,1 0,-2.83A2.83,2.83 0 0,1 2.83,0Z" style="opacity: 1; stroke-width: 1.88976px; fill: rgb(0, 0, 0); fill-opacity: 1; stroke: rgb(0, 0, 0); stroke-opacity: 1;"></path><path class="point" transform="translate(124.67,31.93)" d="M2.83,0A2.83,2.83 0 1,1 0,-2.83A2.83,2.83 0 0,1 2.83,0Z" style="opacity: 1; stroke-width: 1.88976px; fill: rgb(0, 0, 0); fill-opacity: 1; stroke: rgb(0, 0, 0); stroke-opacity: 1;"></path><path class="point" transform="translate(131.56,54.16)" d="M2.83,0A2.83,2.83 0 1,1 0,-2.83A2.83,2.83 0 0,1 2.83,0Z" style="opacity: 1; stroke-width: 1.88976px; fill: rgb(0, 0, 0); fill-opacity: 1; stroke: rgb(0, 0, 0); stroke-opacity: 1;"></path><path class="point" transform="translate(68.27,151.57)" d="M2.83,0A2.83,2.83 0 1,1 0,-2.83A2.83,2.83 0 0,1 2.83,0Z" style="opacity: 1; stroke-width: 1.88976px; fill: rgb(0, 0, 0); fill-opacity: 1; stroke: rgb(0, 0, 0); stroke-opacity: 1;"></path><path class="point" transform="translate(42.69,266.97)" d="M2.83,0A2.83,2.83 0 1,1 0,-2.83A2.83,2.83 0 0,1 2.83,0Z" style="opacity: 1; stroke-width: 1.88976px; fill: rgb(0, 0, 0); fill-opacity: 1; stroke: rgb(0, 0, 0); stroke-opacity: 1;"></path><path class="point" transform="translate(119.16,50.98)" d="M2.83,0A2.83,2.83 0 1,1 0,-2.83A2.83,2.83 0 0,1 2.83,0Z" style="opacity: 1; stroke-width: 1.88976px; fill: rgb(0, 0, 0); fill-opacity: 1; stroke: rgb(0, 0, 0); stroke-opacity: 1;"></path><path class="point" transform="translate(46.51,219.11)" d="M2.83,0A2.83,2.83 0 1,1 0,-2.83A2.83,2.83 0 0,1 2.83,0Z" style="opacity: 1; stroke-width: 1.88976px; fill: rgb(0, 0, 0); fill-opacity: 1; stroke: rgb(0, 0, 0); stroke-opacity: 1;"></path><path class="point" transform="translate(44.95,203.23)" d="M2.83,0A2.83,2.83 0 1,1 0,-2.83A2.83,2.83 0 0,1 2.83,0Z" style="opacity: 1; stroke-width: 1.88976px; fill: rgb(0, 0, 0); fill-opacity: 1; stroke: rgb(0, 0, 0); stroke-opacity: 1;"></path><path class="point" transform="translate(49,167.55)" d="M2.83,0A2.83,2.83 0 1,1 0,-2.83A2.83,2.83 0 0,1 2.83,0Z" style="opacity: 1; stroke-width: 1.88976px; fill: rgb(0, 0, 0); fill-opacity: 1; stroke: rgb(0, 0, 0); stroke-opacity: 1;"></path><path class="point" transform="translate(82.68,116.63)" d="M2.83,0A2.83,2.83 0 1,1 0,-2.83A2.83,2.83 0 0,1 2.83,0Z" style="opacity: 1; stroke-width: 1.88976px; fill: rgb(0, 0, 0); fill-opacity: 1; stroke: rgb(0, 0, 0); stroke-opacity: 1;"></path><path class="point" transform="translate(106.46,104.03)" d="M2.83,0A2.83,2.83 0 1,1 0,-2.83A2.83,2.83 0 0,1 2.83,0Z" style="opacity: 1; stroke-width: 1.88976px; fill: rgb(0, 0, 0); fill-opacity: 1; stroke: rgb(0, 0, 0); stroke-opacity: 1;"></path><path class="point" transform="translate(80.04,150.51)" d="M2.83,0A2.83,2.83 0 1,1 0,-2.83A2.83,2.83 0 0,1 2.83,0Z" style="opacity: 1; stroke-width: 1.88976px; fill: rgb(0, 0, 0); fill-opacity: 1; stroke: rgb(0, 0, 0); stroke-opacity: 1;"></path><path class="point" transform="translate(82.71,98.63)" d="M2.83,0A2.83,2.83 0 1,1 0,-2.83A2.83,2.83 0 0,1 2.83,0Z" style="opacity: 1; stroke-width: 1.88976px; fill: rgb(0, 0, 0); fill-opacity: 1; stroke: rgb(0, 0, 0); stroke-opacity: 1;"></path><path class="point" transform="translate(65.46,131.45)" d="M2.83,0A2.83,2.83 0 1,1 0,-2.83A2.83,2.83 0 0,1 2.83,0Z" style="opacity: 1; stroke-width: 1.88976px; fill: rgb(0, 0, 0); fill-opacity: 1; stroke: rgb(0, 0, 0); stroke-opacity: 1;"></path><path class="point" transform="translate(66.28,125.1)" d="M2.83,0A2.83,2.83 0 1,1 0,-2.83A2.83,2.83 0 0,1 2.83,0Z" style="opacity: 1; stroke-width: 1.88976px; fill: rgb(0, 0, 0); fill-opacity: 1; stroke: rgb(0, 0, 0); stroke-opacity: 1;"></path><path class="point" transform="translate(66.17,160.04)" d="M2.83,0A2.83,2.83 0 1,1 0,-2.83A2.83,2.83 0 0,1 2.83,0Z" style="opacity: 1; stroke-width: 1.88976px; fill: rgb(0, 0, 0); fill-opacity: 1; stroke: rgb(0, 0, 0); stroke-opacity: 1;"></path><path class="point" transform="translate(70.06,106.04)" d="M2.83,0A2.83,2.83 0 1,1 0,-2.83A2.83,2.83 0 0,1 2.83,0Z" style="opacity: 1; stroke-width: 1.88976px; fill: rgb(0, 0, 0); fill-opacity: 1; stroke: rgb(0, 0, 0); stroke-opacity: 1;"></path><path class="point" transform="translate(62.3,109.22)" d="M2.83,0A2.83,2.83 0 1,1 0,-2.83A2.83,2.83 0 0,1 2.83,0Z" style="opacity: 1; stroke-width: 1.88976px; fill: rgb(0, 0, 0); fill-opacity: 1; stroke: rgb(0, 0, 0); stroke-opacity: 1;"></path><path class="point" transform="translate(131.45,93.23)" d="M2.83,0A2.83,2.83 0 1,1 0,-2.83A2.83,2.83 0 0,1 2.83,0Z" style="opacity: 1; stroke-width: 1.88976px; fill: rgb(0, 0, 0); fill-opacity: 1; stroke: rgb(0, 0, 0); stroke-opacity: 1;"></path><path class="point" transform="translate(62.7,150.51)" d="M2.83,0A2.83,2.83 0 1,1 0,-2.83A2.83,2.83 0 0,1 2.83,0Z" style="opacity: 1; stroke-width: 1.88976px; fill: rgb(0, 0, 0); fill-opacity: 1; stroke: rgb(0, 0, 0); stroke-opacity: 1;"></path><path class="point" transform="translate(54.15,179.09)" d="M2.83,0A2.83,2.83 0 1,1 0,-2.83A2.83,2.83 0 0,1 2.83,0Z" style="opacity: 1; stroke-width: 1.88976px; fill: rgb(0, 0, 0); fill-opacity: 1; stroke: rgb(0, 0, 0); stroke-opacity: 1;"></path><path class="point" transform="translate(42.79,336.95)" d="M2.83,0A2.83,2.83 0 1,1 0,-2.83A2.83,2.83 0 0,1 2.83,0Z" style="opacity: 1; stroke-width: 1.88976px; fill: rgb(0, 0, 0); fill-opacity: 1; stroke: rgb(0, 0, 0); stroke-opacity: 1;"></path><path class="point" transform="translate(133.93,54.16)" d="M2.83,0A2.83,2.83 0 1,1 0,-2.83A2.83,2.83 0 0,1 2.83,0Z" style="opacity: 1; stroke-width: 1.88976px; fill: rgb(0, 0, 0); fill-opacity: 1; stroke: rgb(0, 0, 0); stroke-opacity: 1;"></path><path class="point" transform="translate(144.46,27.69)" d="M2.83,0A2.83,2.83 0 1,1 0,-2.83A2.83,2.83 0 0,1 2.83,0Z" style="opacity: 1; stroke-width: 1.88976px; fill: rgb(0, 0, 0); fill-opacity: 1; stroke: rgb(0, 0, 0); stroke-opacity: 1;"></path><path class="point" transform="translate(78.33,64.75)" d="M2.83,0A2.83,2.83 0 1,1 0,-2.83A2.83,2.83 0 0,1 2.83,0Z" style="opacity: 1; stroke-width: 1.88976px; fill: rgb(0, 0, 0); fill-opacity: 1; stroke: rgb(0, 0, 0); stroke-opacity: 1;"></path><path class="point" transform="translate(62.32,74.28)" d="M2.83,0A2.83,2.83 0 1,1 0,-2.83A2.83,2.83 0 0,1 2.83,0Z" style="opacity: 1; stroke-width: 1.88976px; fill: rgb(0, 0, 0); fill-opacity: 1; stroke: rgb(0, 0, 0); stroke-opacity: 1;"></path><path class="point" transform="translate(47.47,239.34)" d="M2.83,0A2.83,2.83 0 1,1 0,-2.83A2.83,2.83 0 0,1 2.83,0Z" style="opacity: 1; stroke-width: 1.88976px; fill: rgb(0, 0, 0); fill-opacity: 1; stroke: rgb(0, 0, 0); stroke-opacity: 1;"></path><path class="point" transform="translate(47.79,262.84)" d="M2.83,0A2.83,2.83 0 1,1 0,-2.83A2.83,2.83 0 0,1 2.83,0Z" style="opacity: 1; stroke-width: 1.88976px; fill: rgb(0, 0, 0); fill-opacity: 1; stroke: rgb(0, 0, 0); stroke-opacity: 1;"></path><path class="point" transform="translate(42.31,271.21)" d="M2.83,0A2.83,2.83 0 1,1 0,-2.83A2.83,2.83 0 0,1 2.83,0Z" style="opacity: 1; stroke-width: 1.88976px; fill: rgb(0, 0, 0); fill-opacity: 1; stroke: rgb(0, 0, 0); stroke-opacity: 1;"></path><path class="point" transform="translate(44.53,245.9)" d="M2.83,0A2.83,2.83 0 1,1 0,-2.83A2.83,2.83 0 0,1 2.83,0Z" style="opacity: 1; stroke-width: 1.88976px; fill: rgb(0, 0, 0); fill-opacity: 1; stroke: rgb(0, 0, 0); stroke-opacity: 1;"></path><path class="point" transform="translate(61.98,72.05)" d="M2.83,0A2.83,2.83 0 1,1 0,-2.83A2.83,2.83 0 0,1 2.83,0Z" style="opacity: 1; stroke-width: 1.88976px; fill: rgb(0, 0, 0); fill-opacity: 1; stroke: rgb(0, 0, 0); stroke-opacity: 1;"></path><path class="point" transform="translate(48.13,112.07)" d="M2.83,0A2.83,2.83 0 1,1 0,-2.83A2.83,2.83 0 0,1 2.83,0Z" style="opacity: 1; stroke-width: 1.88976px; fill: rgb(0, 0, 0); fill-opacity: 1; stroke: rgb(0, 0, 0); stroke-opacity: 1;"></path><path class="point" transform="translate(52.88,119.8)" d="M2.83,0A2.83,2.83 0 1,1 0,-2.83A2.83,2.83 0 0,1 2.83,0Z" style="opacity: 1; stroke-width: 1.88976px; fill: rgb(0, 0, 0); fill-opacity: 1; stroke: rgb(0, 0, 0); stroke-opacity: 1;"></path><path class="point" transform="translate(75.19,79.57)" d="M2.83,0A2.83,2.83 0 1,1 0,-2.83A2.83,2.83 0 0,1 2.83,0Z" style="opacity: 1; stroke-width: 1.88976px; fill: rgb(0, 0, 0); fill-opacity: 1; stroke: rgb(0, 0, 0); stroke-opacity: 1;"></path><path class="point" transform="translate(57.66,93.33)" d="M2.83,0A2.83,2.83 0 1,1 0,-2.83A2.83,2.83 0 0,1 2.83,0Z" style="opacity: 1; stroke-width: 1.88976px; fill: rgb(0, 0, 0); fill-opacity: 1; stroke: rgb(0, 0, 0); stroke-opacity: 1;"></path><path class="point" transform="translate(110.72,67.92)" d="M2.83,0A2.83,2.83 0 1,1 0,-2.83A2.83,2.83 0 0,1 2.83,0Z" style="opacity: 1; stroke-width: 1.88976px; fill: rgb(0, 0, 0); fill-opacity: 1; stroke: rgb(0, 0, 0); stroke-opacity: 1;"></path><path class="point" transform="translate(90.95,74.28)" d="M2.83,0A2.83,2.83 0 1,1 0,-2.83A2.83,2.83 0 0,1 2.83,0Z" style="opacity: 1; stroke-width: 1.88976px; fill: rgb(0, 0, 0); fill-opacity: 1; stroke: rgb(0, 0, 0); stroke-opacity: 1;"></path><path class="point" transform="translate(135.53,64.75)" d="M2.83,0A2.83,2.83 0 1,1 0,-2.83A2.83,2.83 0 0,1 2.83,0Z" style="opacity: 1; stroke-width: 1.88976px; fill: rgb(0, 0, 0); fill-opacity: 1; stroke: rgb(0, 0, 0); stroke-opacity: 1;"></path><path class="point" transform="translate(48.8,195.93)" d="M2.83,0A2.83,2.83 0 1,1 0,-2.83A2.83,2.83 0 0,1 2.83,0Z" style="opacity: 1; stroke-width: 1.88976px; fill: rgb(0, 0, 0); fill-opacity: 1; stroke: rgb(0, 0, 0); stroke-opacity: 1;"></path><path class="point" transform="translate(61.35,114.4)" d="M2.83,0A2.83,2.83 0 1,1 0,-2.83A2.83,2.83 0 0,1 2.83,0Z" style="opacity: 1; stroke-width: 1.88976px; fill: rgb(0, 0, 0); fill-opacity: 1; stroke: rgb(0, 0, 0); stroke-opacity: 1;"></path><path class="point" transform="translate(126.86,57.34)" d="M2.83,0A2.83,2.83 0 1,1 0,-2.83A2.83,2.83 0 0,1 2.83,0Z" style="opacity: 1; stroke-width: 1.88976px; fill: rgb(0, 0, 0); fill-opacity: 1; stroke: rgb(0, 0, 0); stroke-opacity: 1;"></path><path class="point" transform="translate(64.03,147.33)" d="M2.83,0A2.83,2.83 0 1,1 0,-2.83A2.83,2.83 0 0,1 2.83,0Z" style="opacity: 1; stroke-width: 1.88976px; fill: rgb(0, 0, 0); fill-opacity: 1; stroke: rgb(0, 0, 0); stroke-opacity: 1;"></path><path class="point" transform="translate(52.4,115.57)" d="M2.83,0A2.83,2.83 0 1,1 0,-2.83A2.83,2.83 0 0,1 2.83,0Z" style="opacity: 1; stroke-width: 1.88976px; fill: rgb(0, 0, 0); fill-opacity: 1; stroke: rgb(0, 0, 0); stroke-opacity: 1;"></path><path class="point" transform="translate(59.46,108.16)" d="M2.83,0A2.83,2.83 0 1,1 0,-2.83A2.83,2.83 0 0,1 2.83,0Z" style="opacity: 1; stroke-width: 1.88976px; fill: rgb(0, 0, 0); fill-opacity: 1; stroke: rgb(0, 0, 0); stroke-opacity: 1;"></path><path class="point" transform="translate(50.91,179.09)" d="M2.83,0A2.83,2.83 0 1,1 0,-2.83A2.83,2.83 0 0,1 2.83,0Z" style="opacity: 1; stroke-width: 1.88976px; fill: rgb(0, 0, 0); fill-opacity: 1; stroke: rgb(0, 0, 0); stroke-opacity: 1;"></path><path class="point" transform="translate(44.34,253.42)" d="M2.83,0A2.83,2.83 0 1,1 0,-2.83A2.83,2.83 0 0,1 2.83,0Z" style="opacity: 1; stroke-width: 1.88976px; fill: rgb(0, 0, 0); fill-opacity: 1; stroke: rgb(0, 0, 0); stroke-opacity: 1;"></path><path class="point" transform="translate(104.46,40.4)" d="M2.83,0A2.83,2.83 0 1,1 0,-2.83A2.83,2.83 0 0,1 2.83,0Z" style="opacity: 1; stroke-width: 1.88976px; fill: rgb(0, 0, 0); fill-opacity: 1; stroke: rgb(0, 0, 0); stroke-opacity: 1;"></path><path class="point" transform="translate(88.27,88.04)" d="M2.83,0A2.83,2.83 0 1,1 0,-2.83A2.83,2.83 0 0,1 2.83,0Z" style="opacity: 1; stroke-width: 1.88976px; fill: rgb(0, 0, 0); fill-opacity: 1; stroke: rgb(0, 0, 0); stroke-opacity: 1;"></path><path class="point" transform="translate(45.02,234.26)" d="M2.83,0A2.83,2.83 0 1,1 0,-2.83A2.83,2.83 0 0,1 2.83,0Z" style="opacity: 1; stroke-width: 1.88976px; fill: rgb(0, 0, 0); fill-opacity: 1; stroke: rgb(0, 0, 0); stroke-opacity: 1;"></path><path class="point" transform="translate(113.87,55.22)" d="M2.83,0A2.83,2.83 0 1,1 0,-2.83A2.83,2.83 0 0,1 2.83,0Z" style="opacity: 1; stroke-width: 1.88976px; fill: rgb(0, 0, 0); fill-opacity: 1; stroke: rgb(0, 0, 0); stroke-opacity: 1;"></path><path class="point" transform="translate(49.9,203.45)" d="M2.83,0A2.83,2.83 0 1,1 0,-2.83A2.83,2.83 0 0,1 2.83,0Z" style="opacity: 1; stroke-width: 1.88976px; fill: rgb(0, 0, 0); fill-opacity: 1; stroke: rgb(0, 0, 0); stroke-opacity: 1;"></path><path class="point" transform="translate(117.17,45.69)" d="M2.83,0A2.83,2.83 0 1,1 0,-2.83A2.83,2.83 0 0,1 2.83,0Z" style="opacity: 1; stroke-width: 1.88976px; fill: rgb(0, 0, 0); fill-opacity: 1; stroke: rgb(0, 0, 0); stroke-opacity: 1;"></path><path class="point" transform="translate(46.93,210.86)" d="M2.83,0A2.83,2.83 0 1,1 0,-2.83A2.83,2.83 0 0,1 2.83,0Z" style="opacity: 1; stroke-width: 1.88976px; fill: rgb(0, 0, 0); fill-opacity: 1; stroke: rgb(0, 0, 0); stroke-opacity: 1;"></path><path class="point" transform="translate(55.79,210.86)" d="M2.83,0A2.83,2.83 0 1,1 0,-2.83A2.83,2.83 0 0,1 2.83,0Z" style="opacity: 1; stroke-width: 1.88976px; fill: rgb(0, 0, 0); fill-opacity: 1; stroke: rgb(0, 0, 0); stroke-opacity: 1;"></path><path class="point" transform="translate(116.24,63.69)" d="M2.83,0A2.83,2.83 0 1,1 0,-2.83A2.83,2.83 0 0,1 2.83,0Z" style="opacity: 1; stroke-width: 1.88976px; fill: rgb(0, 0, 0); fill-opacity: 1; stroke: rgb(0, 0, 0); stroke-opacity: 1;"></path><path class="point" transform="translate(52.69,129.33)" d="M2.83,0A2.83,2.83 0 1,1 0,-2.83A2.83,2.83 0 0,1 2.83,0Z" style="opacity: 1; stroke-width: 1.88976px; fill: rgb(0, 0, 0); fill-opacity: 1; stroke: rgb(0, 0, 0); stroke-opacity: 1;"></path><path class="point" transform="translate(46.96,227.8)" d="M2.83,0A2.83,2.83 0 1,1 0,-2.83A2.83,2.83 0 0,1 2.83,0Z" style="opacity: 1; stroke-width: 1.88976px; fill: rgb(0, 0, 0); fill-opacity: 1; stroke: rgb(0, 0, 0); stroke-opacity: 1;"></path><path class="point" transform="translate(48.47,258.39)" d="M2.83,0A2.83,2.83 0 1,1 0,-2.83A2.83,2.83 0 0,1 2.83,0Z" style="opacity: 1; stroke-width: 1.88976px; fill: rgb(0, 0, 0); fill-opacity: 1; stroke: rgb(0, 0, 0); stroke-opacity: 1;"></path><path class="point" transform="translate(48.04,207.68)" d="M2.83,0A2.83,2.83 0 1,1 0,-2.83A2.83,2.83 0 0,1 2.83,0Z" style="opacity: 1; stroke-width: 1.88976px; fill: rgb(0, 0, 0); fill-opacity: 1; stroke: rgb(0, 0, 0); stroke-opacity: 1;"></path><path class="point" transform="translate(45.04,272.37)" d="M2.83,0A2.83,2.83 0 1,1 0,-2.83A2.83,2.83 0 0,1 2.83,0Z" style="opacity: 1; stroke-width: 1.88976px; fill: rgb(0, 0, 0); fill-opacity: 1; stroke: rgb(0, 0, 0); stroke-opacity: 1;"></path><path class="point" transform="translate(49.62,271.31)" d="M2.83,0A2.83,2.83 0 1,1 0,-2.83A2.83,2.83 0 0,1 2.83,0Z" style="opacity: 1; stroke-width: 1.88976px; fill: rgb(0, 0, 0); fill-opacity: 1; stroke: rgb(0, 0, 0); stroke-opacity: 1;"></path><path class="point" transform="translate(79.91,63.69)" d="M2.83,0A2.83,2.83 0 1,1 0,-2.83A2.83,2.83 0 0,1 2.83,0Z" style="opacity: 1; stroke-width: 1.88976px; fill: rgb(0, 0, 0); fill-opacity: 1; stroke: rgb(0, 0, 0); stroke-opacity: 1;"></path><path class="point" transform="translate(65.16,124.04)" d="M2.83,0A2.83,2.83 0 1,1 0,-2.83A2.83,2.83 0 0,1 2.83,0Z" style="opacity: 1; stroke-width: 1.88976px; fill: rgb(0, 0, 0); fill-opacity: 1; stroke: rgb(0, 0, 0); stroke-opacity: 1;"></path><path class="point" transform="translate(54.42,146.27)" d="M2.83,0A2.83,2.83 0 1,1 0,-2.83A2.83,2.83 0 0,1 2.83,0Z" style="opacity: 1; stroke-width: 1.88976px; fill: rgb(0, 0, 0); fill-opacity: 1; stroke: rgb(0, 0, 0); stroke-opacity: 1;"></path><path class="point" transform="translate(154.53,190.74)" d="M2.83,0A2.83,2.83 0 1,1 0,-2.83A2.83,2.83 0 0,1 2.83,0Z" style="opacity: 1; stroke-width: 1.88976px; fill: rgb(0, 0, 0); fill-opacity: 1; stroke: rgb(0, 0, 0); stroke-opacity: 1;"></path><path class="point" transform="translate(52.55,115.57)" d="M2.83,0A2.83,2.83 0 1,1 0,-2.83A2.83,2.83 0 0,1 2.83,0Z" style="opacity: 1; stroke-width: 1.88976px; fill: rgb(0, 0, 0); fill-opacity: 1; stroke: rgb(0, 0, 0); stroke-opacity: 1;"></path><path class="point" transform="translate(84.33,88.04)" d="M2.83,0A2.83,2.83 0 1,1 0,-2.83A2.83,2.83 0 0,1 2.83,0Z" style="opacity: 1; stroke-width: 1.88976px; fill: rgb(0, 0, 0); fill-opacity: 1; stroke: rgb(0, 0, 0); stroke-opacity: 1;"></path><path class="point" transform="translate(48.22,274.49)" d="M2.83,0A2.83,2.83 0 1,1 0,-2.83A2.83,2.83 0 0,1 2.83,0Z" style="opacity: 1; stroke-width: 1.88976px; fill: rgb(0, 0, 0); fill-opacity: 1; stroke: rgb(0, 0, 0); stroke-opacity: 1;"></path><path class="point" transform="translate(77.12,107.1)" d="M2.83,0A2.83,2.83 0 1,1 0,-2.83A2.83,2.83 0 0,1 2.83,0Z" style="opacity: 1; stroke-width: 1.88976px; fill: rgb(0, 0, 0); fill-opacity: 1; stroke: rgb(0, 0, 0); stroke-opacity: 1;"></path><path class="point" transform="translate(49.18,152.63)" d="M2.83,0A2.83,2.83 0 1,1 0,-2.83A2.83,2.83 0 0,1 2.83,0Z" style="opacity: 1; stroke-width: 1.88976px; fill: rgb(0, 0, 0); fill-opacity: 1; stroke: rgb(0, 0, 0); stroke-opacity: 1;"></path><path class="point" transform="translate(48.05,162.15)" d="M2.83,0A2.83,2.83 0 1,1 0,-2.83A2.83,2.83 0 0,1 2.83,0Z" style="opacity: 1; stroke-width: 1.88976px; fill: rgb(0, 0, 0); fill-opacity: 1; stroke: rgb(0, 0, 0); stroke-opacity: 1;"></path><path class="point" transform="translate(103.35,46.75)" d="M2.83,0A2.83,2.83 0 1,1 0,-2.83A2.83,2.83 0 0,1 2.83,0Z" style="opacity: 1; stroke-width: 1.88976px; fill: rgb(0, 0, 0); fill-opacity: 1; stroke: rgb(0, 0, 0); stroke-opacity: 1;"></path><path class="point" transform="translate(54.72,85.92)" d="M2.83,0A2.83,2.83 0 1,1 0,-2.83A2.83,2.83 0 0,1 2.83,0Z" style="opacity: 1; stroke-width: 1.88976px; fill: rgb(0, 0, 0); fill-opacity: 1; stroke: rgb(0, 0, 0); stroke-opacity: 1;"></path><path class="point" transform="translate(54.09,168.51)" d="M2.83,0A2.83,2.83 0 1,1 0,-2.83A2.83,2.83 0 0,1 2.83,0Z" style="opacity: 1; stroke-width: 1.88976px; fill: rgb(0, 0, 0); fill-opacity: 1; stroke: rgb(0, 0, 0); stroke-opacity: 1;"></path><path class="point" transform="translate(117.05,45.69)" d="M2.83,0A2.83,2.83 0 1,1 0,-2.83A2.83,2.83 0 0,1 2.83,0Z" style="opacity: 1; stroke-width: 1.88976px; fill: rgb(0, 0, 0); fill-opacity: 1; stroke: rgb(0, 0, 0); stroke-opacity: 1;"></path><path class="point" transform="translate(90.38,37.22)" d="M2.83,0A2.83,2.83 0 1,1 0,-2.83A2.83,2.83 0 0,1 2.83,0Z" style="opacity: 1; stroke-width: 1.88976px; fill: rgb(0, 0, 0); fill-opacity: 1; stroke: rgb(0, 0, 0); stroke-opacity: 1;"></path><path class="point" transform="translate(108.02,41.46)" d="M2.83,0A2.83,2.83 0 1,1 0,-2.83A2.83,2.83 0 0,1 2.83,0Z" style="opacity: 1; stroke-width: 1.88976px; fill: rgb(0, 0, 0); fill-opacity: 1; stroke: rgb(0, 0, 0); stroke-opacity: 1;"></path><path class="point" transform="translate(63.12,115.46)" d="M2.83,0A2.83,2.83 0 1,1 0,-2.83A2.83,2.83 0 0,1 2.83,0Z" style="opacity: 1; stroke-width: 1.88976px; fill: rgb(0, 0, 0); fill-opacity: 1; stroke: rgb(0, 0, 0); stroke-opacity: 1;"></path><path class="point" transform="translate(57.07,89.1)" d="M2.83,0A2.83,2.83 0 1,1 0,-2.83A2.83,2.83 0 0,1 2.83,0Z" style="opacity: 1; stroke-width: 1.88976px; fill: rgb(0, 0, 0); fill-opacity: 1; stroke: rgb(0, 0, 0); stroke-opacity: 1;"></path><path class="point" transform="translate(99.3,29.81)" d="M2.83,0A2.83,2.83 0 1,1 0,-2.83A2.83,2.83 0 0,1 2.83,0Z" style="opacity: 1; stroke-width: 1.88976px; fill: rgb(0, 0, 0); fill-opacity: 1; stroke: rgb(0, 0, 0); stroke-opacity: 1;"></path><path class="point" transform="translate(58.67,128.27)" d="M2.83,0A2.83,2.83 0 1,1 0,-2.83A2.83,2.83 0 0,1 2.83,0Z" style="opacity: 1; stroke-width: 1.88976px; fill: rgb(0, 0, 0); fill-opacity: 1; stroke: rgb(0, 0, 0); stroke-opacity: 1;"></path><path class="point" transform="translate(45.13,179.94)" d="M2.83,0A2.83,2.83 0 1,1 0,-2.83A2.83,2.83 0 0,1 2.83,0Z" style="opacity: 1; stroke-width: 1.88976px; fill: rgb(0, 0, 0); fill-opacity: 1; stroke: rgb(0, 0, 0); stroke-opacity: 1;"></path><path class="point" transform="translate(48.63,125.1)" d="M2.83,0A2.83,2.83 0 1,1 0,-2.83A2.83,2.83 0 0,1 2.83,0Z" style="opacity: 1; stroke-width: 1.88976px; fill: rgb(0, 0, 0); fill-opacity: 1; stroke: rgb(0, 0, 0); stroke-opacity: 1;"></path><path class="point" transform="translate(49.37,147.33)" d="M2.83,0A2.83,2.83 0 1,1 0,-2.83A2.83,2.83 0 0,1 2.83,0Z" style="opacity: 1; stroke-width: 1.88976px; fill: rgb(0, 0, 0); fill-opacity: 1; stroke: rgb(0, 0, 0); stroke-opacity: 1;"></path><path class="point" transform="translate(48.54,167.34)" d="M2.83,0A2.83,2.83 0 1,1 0,-2.83A2.83,2.83 0 0,1 2.83,0Z" style="opacity: 1; stroke-width: 1.88976px; fill: rgb(0, 0, 0); fill-opacity: 1; stroke: rgb(0, 0, 0); stroke-opacity: 1;"></path><path class="point" transform="translate(74.6,128.17)" d="M2.83,0A2.83,2.83 0 1,1 0,-2.83A2.83,2.83 0 0,1 2.83,0Z" style="opacity: 1; stroke-width: 1.88976px; fill: rgb(0, 0, 0); fill-opacity: 1; stroke: rgb(0, 0, 0); stroke-opacity: 1;"></path><path class="point" transform="translate(120.6,38.28)" d="M2.83,0A2.83,2.83 0 1,1 0,-2.83A2.83,2.83 0 0,1 2.83,0Z" style="opacity: 1; stroke-width: 1.88976px; fill: rgb(0, 0, 0); fill-opacity: 1; stroke: rgb(0, 0, 0); stroke-opacity: 1;"></path><path class="point" transform="translate(90.37,61.57)" d="M2.83,0A2.83,2.83 0 1,1 0,-2.83A2.83,2.83 0 0,1 2.83,0Z" style="opacity: 1; stroke-width: 1.88976px; fill: rgb(0, 0, 0); fill-opacity: 1; stroke: rgb(0, 0, 0); stroke-opacity: 1;"></path><path class="point" transform="translate(48.88,220.49)" d="M2.83,0A2.83,2.83 0 1,1 0,-2.83A2.83,2.83 0 0,1 2.83,0Z" style="opacity: 1; stroke-width: 1.88976px; fill: rgb(0, 0, 0); fill-opacity: 1; stroke: rgb(0, 0, 0); stroke-opacity: 1;"></path><path class="point" transform="translate(50.47,85.92)" d="M2.83,0A2.83,2.83 0 1,1 0,-2.83A2.83,2.83 0 0,1 2.83,0Z" style="opacity: 1; stroke-width: 1.88976px; fill: rgb(0, 0, 0); fill-opacity: 1; stroke: rgb(0, 0, 0); stroke-opacity: 1;"></path><path class="point" transform="translate(45.29,270.15)" d="M2.83,0A2.83,2.83 0 1,1 0,-2.83A2.83,2.83 0 0,1 2.83,0Z" style="opacity: 1; stroke-width: 1.88976px; fill: rgb(0, 0, 0); fill-opacity: 1; stroke: rgb(0, 0, 0); stroke-opacity: 1;"></path><path class="point" transform="translate(54.73,160.88)" d="M2.83,0A2.83,2.83 0 1,1 0,-2.83A2.83,2.83 0 0,1 2.83,0Z" style="opacity: 1; stroke-width: 1.88976px; fill: rgb(0, 0, 0); fill-opacity: 1; stroke: rgb(0, 0, 0); stroke-opacity: 1;"></path><path class="point" transform="translate(119.73,101.7)" d="M2.83,0A2.83,2.83 0 1,1 0,-2.83A2.83,2.83 0 0,1 2.83,0Z" style="opacity: 1; stroke-width: 1.88976px; fill: rgb(0, 0, 0); fill-opacity: 1; stroke: rgb(0, 0, 0); stroke-opacity: 1;"></path><path class="point" transform="translate(51.14,109.22)" d="M2.83,0A2.83,2.83 0 1,1 0,-2.83A2.83,2.83 0 0,1 2.83,0Z" style="opacity: 1; stroke-width: 1.88976px; fill: rgb(0, 0, 0); fill-opacity: 1; stroke: rgb(0, 0, 0); stroke-opacity: 1;"></path><path class="point" transform="translate(45.01,305.09)" d="M2.83,0A2.83,2.83 0 1,1 0,-2.83A2.83,2.83 0 0,1 2.83,0Z" style="opacity: 1; stroke-width: 1.88976px; fill: rgb(0, 0, 0); fill-opacity: 1; stroke: rgb(0, 0, 0); stroke-opacity: 1;"></path><path class="point" transform="translate(94.4,109.22)" d="M2.83,0A2.83,2.83 0 1,1 0,-2.83A2.83,2.83 0 0,1 2.83,0Z" style="opacity: 1; stroke-width: 1.88976px; fill: rgb(0, 0, 0); fill-opacity: 1; stroke: rgb(0, 0, 0); stroke-opacity: 1;"></path><path class="point" transform="translate(155.11,39.34)" d="M2.83,0A2.83,2.83 0 1,1 0,-2.83A2.83,2.83 0 0,1 2.83,0Z" style="opacity: 1; stroke-width: 1.88976px; fill: rgb(0, 0, 0); fill-opacity: 1; stroke: rgb(0, 0, 0); stroke-opacity: 1;"></path><path class="point" transform="translate(85.04,118.74)" d="M2.83,0A2.83,2.83 0 1,1 0,-2.83A2.83,2.83 0 0,1 2.83,0Z" style="opacity: 1; stroke-width: 1.88976px; fill: rgb(0, 0, 0); fill-opacity: 1; stroke: rgb(0, 0, 0); stroke-opacity: 1;"></path><path class="point" transform="translate(55.11,147.44)" d="M2.83,0A2.83,2.83 0 1,1 0,-2.83A2.83,2.83 0 0,1 2.83,0Z" style="opacity: 1; stroke-width: 1.88976px; fill: rgb(0, 0, 0); fill-opacity: 1; stroke: rgb(0, 0, 0); stroke-opacity: 1;"></path><path class="point" transform="translate(875.32,70.15)" d="M2.83,0A2.83,2.83 0 1,1 0,-2.83A2.83,2.83 0 0,1 2.83,0Z" style="opacity: 1; stroke-width: 1.88976px; fill: rgb(0, 0, 0); fill-opacity: 1; stroke: rgb(0, 0, 0); stroke-opacity: 1;"></path><path class="point" transform="translate(56.21,116.52)" d="M2.83,0A2.83,2.83 0 1,1 0,-2.83A2.83,2.83 0 0,1 2.83,0Z" style="opacity: 1; stroke-width: 1.88976px; fill: rgb(0, 0, 0); fill-opacity: 1; stroke: rgb(0, 0, 0); stroke-opacity: 1;"></path><path class="point" transform="translate(41.68,258.5)" d="M2.83,0A2.83,2.83 0 1,1 0,-2.83A2.83,2.83 0 0,1 2.83,0Z" style="opacity: 1; stroke-width: 1.88976px; fill: rgb(0, 0, 0); fill-opacity: 1; stroke: rgb(0, 0, 0); stroke-opacity: 1;"></path><path class="point" transform="translate(61.55,113.66)" d="M2.83,0A2.83,2.83 0 1,1 0,-2.83A2.83,2.83 0 0,1 2.83,0Z" style="opacity: 1; stroke-width: 1.88976px; fill: rgb(0, 0, 0); fill-opacity: 1; stroke: rgb(0, 0, 0); stroke-opacity: 1;"></path><path class="point" transform="translate(60.87,112.39)" d="M2.83,0A2.83,2.83 0 1,1 0,-2.83A2.83,2.83 0 0,1 2.83,0Z" style="opacity: 1; stroke-width: 1.88976px; fill: rgb(0, 0, 0); fill-opacity: 1; stroke: rgb(0, 0, 0); stroke-opacity: 1;"></path><path class="point" transform="translate(56.3,241.67)" d="M2.83,0A2.83,2.83 0 1,1 0,-2.83A2.83,2.83 0 0,1 2.83,0Z" style="opacity: 1; stroke-width: 1.88976px; fill: rgb(0, 0, 0); fill-opacity: 1; stroke: rgb(0, 0, 0); stroke-opacity: 1;"></path><path class="point" transform="translate(62.03,106.04)" d="M2.83,0A2.83,2.83 0 1,1 0,-2.83A2.83,2.83 0 0,1 2.83,0Z" style="opacity: 1; stroke-width: 1.88976px; fill: rgb(0, 0, 0); fill-opacity: 1; stroke: rgb(0, 0, 0); stroke-opacity: 1;"></path><path class="point" transform="translate(45.4,245.58)" d="M2.83,0A2.83,2.83 0 1,1 0,-2.83A2.83,2.83 0 0,1 2.83,0Z" style="opacity: 1; stroke-width: 1.88976px; fill: rgb(0, 0, 0); fill-opacity: 1; stroke: rgb(0, 0, 0); stroke-opacity: 1;"></path><path class="point" transform="translate(118.85,41.46)" d="M2.83,0A2.83,2.83 0 1,1 0,-2.83A2.83,2.83 0 0,1 2.83,0Z" style="opacity: 1; stroke-width: 1.88976px; fill: rgb(0, 0, 0); fill-opacity: 1; stroke: rgb(0, 0, 0); stroke-opacity: 1;"></path><path class="point" transform="translate(46.44,227.8)" d="M2.83,0A2.83,2.83 0 1,1 0,-2.83A2.83,2.83 0 0,1 2.83,0Z" style="opacity: 1; stroke-width: 1.88976px; fill: rgb(0, 0, 0); fill-opacity: 1; stroke: rgb(0, 0, 0); stroke-opacity: 1;"></path><path class="point" transform="translate(67.53,103.92)" d="M2.83,0A2.83,2.83 0 1,1 0,-2.83A2.83,2.83 0 0,1 2.83,0Z" style="opacity: 1; stroke-width: 1.88976px; fill: rgb(0, 0, 0); fill-opacity: 1; stroke: rgb(0, 0, 0); stroke-opacity: 1;"></path><path class="point" transform="translate(57.84,145.11)" d="M2.83,0A2.83,2.83 0 1,1 0,-2.83A2.83,2.83 0 0,1 2.83,0Z" style="opacity: 1; stroke-width: 1.88976px; fill: rgb(0, 0, 0); fill-opacity: 1; stroke: rgb(0, 0, 0); stroke-opacity: 1;"></path><path class="point" transform="translate(42.25,233.09)" d="M2.83,0A2.83,2.83 0 1,1 0,-2.83A2.83,2.83 0 0,1 2.83,0Z" style="opacity: 1; stroke-width: 1.88976px; fill: rgb(0, 0, 0); fill-opacity: 1; stroke: rgb(0, 0, 0); stroke-opacity: 1;"></path><path class="point" transform="translate(48.3,199.21)" d="M2.83,0A2.83,2.83 0 1,1 0,-2.83A2.83,2.83 0 0,1 2.83,0Z" style="opacity: 1; stroke-width: 1.88976px; fill: rgb(0, 0, 0); fill-opacity: 1; stroke: rgb(0, 0, 0); stroke-opacity: 1;"></path><path class="point" transform="translate(62.64,138.86)" d="M2.83,0A2.83,2.83 0 1,1 0,-2.83A2.83,2.83 0 0,1 2.83,0Z" style="opacity: 1; stroke-width: 1.88976px; fill: rgb(0, 0, 0); fill-opacity: 1; stroke: rgb(0, 0, 0); stroke-opacity: 1;"></path><path class="point" transform="translate(42.56,264.01)" d="M2.83,0A2.83,2.83 0 1,1 0,-2.83A2.83,2.83 0 0,1 2.83,0Z" style="opacity: 1; stroke-width: 1.88976px; fill: rgb(0, 0, 0); fill-opacity: 1; stroke: rgb(0, 0, 0); stroke-opacity: 1;"></path><path class="point" transform="translate(92.09,112.39)" d="M2.83,0A2.83,2.83 0 1,1 0,-2.83A2.83,2.83 0 0,1 2.83,0Z" style="opacity: 1; stroke-width: 1.88976px; fill: rgb(0, 0, 0); fill-opacity: 1; stroke: rgb(0, 0, 0); stroke-opacity: 1;"></path><path class="point" transform="translate(52.09,218.27)" d="M2.83,0A2.83,2.83 0 1,1 0,-2.83A2.83,2.83 0 0,1 2.83,0Z" style="opacity: 1; stroke-width: 1.88976px; fill: rgb(0, 0, 0); fill-opacity: 1; stroke: rgb(0, 0, 0); stroke-opacity: 1;"></path><path class="point" transform="translate(43.99,293.55)" d="M2.83,0A2.83,2.83 0 1,1 0,-2.83A2.83,2.83 0 0,1 2.83,0Z" style="opacity: 1; stroke-width: 1.88976px; fill: rgb(0, 0, 0); fill-opacity: 1; stroke: rgb(0, 0, 0); stroke-opacity: 1;"></path><path class="point" transform="translate(45.24,238.17)" d="M2.83,0A2.83,2.83 0 1,1 0,-2.83A2.83,2.83 0 0,1 2.83,0Z" style="opacity: 1; stroke-width: 1.88976px; fill: rgb(0, 0, 0); fill-opacity: 1; stroke: rgb(0, 0, 0); stroke-opacity: 1;"></path><path class="point" transform="translate(56.7,108.16)" d="M2.83,0A2.83,2.83 0 1,1 0,-2.83A2.83,2.83 0 0,1 2.83,0Z" style="opacity: 1; stroke-width: 1.88976px; fill: rgb(0, 0, 0); fill-opacity: 1; stroke: rgb(0, 0, 0); stroke-opacity: 1;"></path><path class="point" transform="translate(129.91,53.1)" d="M2.83,0A2.83,2.83 0 1,1 0,-2.83A2.83,2.83 0 0,1 2.83,0Z" style="opacity: 1; stroke-width: 1.88976px; fill: rgb(0, 0, 0); fill-opacity: 1; stroke: rgb(0, 0, 0); stroke-opacity: 1;"></path><path class="point" transform="translate(137.79,41.46)" d="M2.83,0A2.83,2.83 0 1,1 0,-2.83A2.83,2.83 0 0,1 2.83,0Z" style="opacity: 1; stroke-width: 1.88976px; fill: rgb(0, 0, 0); fill-opacity: 1; stroke: rgb(0, 0, 0); stroke-opacity: 1;"></path><path class="point" transform="translate(51.25,141.93)" d="M2.83,0A2.83,2.83 0 1,1 0,-2.83A2.83,2.83 0 0,1 2.83,0Z" style="opacity: 1; stroke-width: 1.88976px; fill: rgb(0, 0, 0); fill-opacity: 1; stroke: rgb(0, 0, 0); stroke-opacity: 1;"></path><path class="point" transform="translate(51.19,295.66)" d="M2.83,0A2.83,2.83 0 1,1 0,-2.83A2.83,2.83 0 0,1 2.83,0Z" style="opacity: 1; stroke-width: 1.88976px; fill: rgb(0, 0, 0); fill-opacity: 1; stroke: rgb(0, 0, 0); stroke-opacity: 1;"></path><path class="point" transform="translate(93.52,57.34)" d="M2.83,0A2.83,2.83 0 1,1 0,-2.83A2.83,2.83 0 0,1 2.83,0Z" style="opacity: 1; stroke-width: 1.88976px; fill: rgb(0, 0, 0); fill-opacity: 1; stroke: rgb(0, 0, 0); stroke-opacity: 1;"></path><path class="point" transform="translate(80.49,105.09)" d="M2.83,0A2.83,2.83 0 1,1 0,-2.83A2.83,2.83 0 0,1 2.83,0Z" style="opacity: 1; stroke-width: 1.88976px; fill: rgb(0, 0, 0); fill-opacity: 1; stroke: rgb(0, 0, 0); stroke-opacity: 1;"></path><path class="point" transform="translate(46.26,178.99)" d="M2.83,0A2.83,2.83 0 1,1 0,-2.83A2.83,2.83 0 0,1 2.83,0Z" style="opacity: 1; stroke-width: 1.88976px; fill: rgb(0, 0, 0); fill-opacity: 1; stroke: rgb(0, 0, 0); stroke-opacity: 1;"></path><path class="point" transform="translate(71.74,81.69)" d="M2.83,0A2.83,2.83 0 1,1 0,-2.83A2.83,2.83 0 0,1 2.83,0Z" style="opacity: 1; stroke-width: 1.88976px; fill: rgb(0, 0, 0); fill-opacity: 1; stroke: rgb(0, 0, 0); stroke-opacity: 1;"></path><path class="point" transform="translate(55.63,103.92)" d="M2.83,0A2.83,2.83 0 1,1 0,-2.83A2.83,2.83 0 0,1 2.83,0Z" style="opacity: 1; stroke-width: 1.88976px; fill: rgb(0, 0, 0); fill-opacity: 1; stroke: rgb(0, 0, 0); stroke-opacity: 1;"></path><path class="point" transform="translate(60.48,157.92)" d="M2.83,0A2.83,2.83 0 1,1 0,-2.83A2.83,2.83 0 0,1 2.83,0Z" style="opacity: 1; stroke-width: 1.88976px; fill: rgb(0, 0, 0); fill-opacity: 1; stroke: rgb(0, 0, 0); stroke-opacity: 1;"></path><path class="point" transform="translate(58.33,191.8)" d="M2.83,0A2.83,2.83 0 1,1 0,-2.83A2.83,2.83 0 0,1 2.83,0Z" style="opacity: 1; stroke-width: 1.88976px; fill: rgb(0, 0, 0); fill-opacity: 1; stroke: rgb(0, 0, 0); stroke-opacity: 1;"></path><path class="point" transform="translate(45.34,218.27)" d="M2.83,0A2.83,2.83 0 1,1 0,-2.83A2.83,2.83 0 0,1 2.83,0Z" style="opacity: 1; stroke-width: 1.88976px; fill: rgb(0, 0, 0); fill-opacity: 1; stroke: rgb(0, 0, 0); stroke-opacity: 1;"></path><path class="point" transform="translate(91.9,88.04)" d="M2.83,0A2.83,2.83 0 1,1 0,-2.83A2.83,2.83 0 0,1 2.83,0Z" style="opacity: 1; stroke-width: 1.88976px; fill: rgb(0, 0, 0); fill-opacity: 1; stroke: rgb(0, 0, 0); stroke-opacity: 1;"></path><path class="point" transform="translate(43.4,140.98)" d="M2.83,0A2.83,2.83 0 1,1 0,-2.83A2.83,2.83 0 0,1 2.83,0Z" style="opacity: 1; stroke-width: 1.88976px; fill: rgb(0, 0, 0); fill-opacity: 1; stroke: rgb(0, 0, 0); stroke-opacity: 1;"></path><path class="point" transform="translate(87.83,52.04)" d="M2.83,0A2.83,2.83 0 1,1 0,-2.83A2.83,2.83 0 0,1 2.83,0Z" style="opacity: 1; stroke-width: 1.88976px; fill: rgb(0, 0, 0); fill-opacity: 1; stroke: rgb(0, 0, 0); stroke-opacity: 1;"></path><path class="point" transform="translate(63.8,147.33)" d="M2.83,0A2.83,2.83 0 1,1 0,-2.83A2.83,2.83 0 0,1 2.83,0Z" style="opacity: 1; stroke-width: 1.88976px; fill: rgb(0, 0, 0); fill-opacity: 1; stroke: rgb(0, 0, 0); stroke-opacity: 1;"></path><path class="point" transform="translate(52.11,181.85)" d="M2.83,0A2.83,2.83 0 1,1 0,-2.83A2.83,2.83 0 0,1 2.83,0Z" style="opacity: 1; stroke-width: 1.88976px; fill: rgb(0, 0, 0); fill-opacity: 1; stroke: rgb(0, 0, 0); stroke-opacity: 1;"></path><path class="point" transform="translate(138.1,59.45)" d="M2.83,0A2.83,2.83 0 1,1 0,-2.83A2.83,2.83 0 0,1 2.83,0Z" style="opacity: 1; stroke-width: 1.88976px; fill: rgb(0, 0, 0); fill-opacity: 1; stroke: rgb(0, 0, 0); stroke-opacity: 1;"></path><path class="point" transform="translate(75.83,112.39)" d="M2.83,0A2.83,2.83 0 1,1 0,-2.83A2.83,2.83 0 0,1 2.83,0Z" style="opacity: 1; stroke-width: 1.88976px; fill: rgb(0, 0, 0); fill-opacity: 1; stroke: rgb(0, 0, 0); stroke-opacity: 1;"></path><path class="point" transform="translate(87.66,146.27)" d="M2.83,0A2.83,2.83 0 1,1 0,-2.83A2.83,2.83 0 0,1 2.83,0Z" style="opacity: 1; stroke-width: 1.88976px; fill: rgb(0, 0, 0); fill-opacity: 1; stroke: rgb(0, 0, 0); stroke-opacity: 1;"></path><path class="point" transform="translate(45.36,235.31)" d="M2.83,0A2.83,2.83 0 1,1 0,-2.83A2.83,2.83 0 0,1 2.83,0Z" style="opacity: 1; stroke-width: 1.88976px; fill: rgb(0, 0, 0); fill-opacity: 1; stroke: rgb(0, 0, 0); stroke-opacity: 1;"></path><path class="point" transform="translate(110.76,130.6)" d="M2.83,0A2.83,2.83 0 1,1 0,-2.83A2.83,2.83 0 0,1 2.83,0Z" style="opacity: 1; stroke-width: 1.88976px; fill: rgb(0, 0, 0); fill-opacity: 1; stroke: rgb(0, 0, 0); stroke-opacity: 1;"></path><path class="point" transform="translate(43.45,190.63)" d="M2.83,0A2.83,2.83 0 1,1 0,-2.83A2.83,2.83 0 0,1 2.83,0Z" style="opacity: 1; stroke-width: 1.88976px; fill: rgb(0, 0, 0); fill-opacity: 1; stroke: rgb(0, 0, 0); stroke-opacity: 1;"></path><path class="point" transform="translate(47.77,178.04)" d="M2.83,0A2.83,2.83 0 1,1 0,-2.83A2.83,2.83 0 0,1 2.83,0Z" style="opacity: 1; stroke-width: 1.88976px; fill: rgb(0, 0, 0); fill-opacity: 1; stroke: rgb(0, 0, 0); stroke-opacity: 1;"></path><path class="point" transform="translate(205.57,16.05)" d="M2.83,0A2.83,2.83 0 1,1 0,-2.83A2.83,2.83 0 0,1 2.83,0Z" style="opacity: 1; stroke-width: 1.88976px; fill: rgb(0, 0, 0); fill-opacity: 1; stroke: rgb(0, 0, 0); stroke-opacity: 1;"></path><path class="point" transform="translate(44.39,246.01)" d="M2.83,0A2.83,2.83 0 1,1 0,-2.83A2.83,2.83 0 0,1 2.83,0Z" style="opacity: 1; stroke-width: 1.88976px; fill: rgb(0, 0, 0); fill-opacity: 1; stroke: rgb(0, 0, 0); stroke-opacity: 1;"></path><path class="point" transform="translate(45.35,296.72)" d="M2.83,0A2.83,2.83 0 1,1 0,-2.83A2.83,2.83 0 0,1 2.83,0Z" style="opacity: 1; stroke-width: 1.88976px; fill: rgb(0, 0, 0); fill-opacity: 1; stroke: rgb(0, 0, 0); stroke-opacity: 1;"></path><path class="point" transform="translate(57.91,146.27)" d="M2.83,0A2.83,2.83 0 1,1 0,-2.83A2.83,2.83 0 0,1 2.83,0Z" style="opacity: 1; stroke-width: 1.88976px; fill: rgb(0, 0, 0); fill-opacity: 1; stroke: rgb(0, 0, 0); stroke-opacity: 1;"></path><path class="point" transform="translate(120.91,20.28)" d="M2.83,0A2.83,2.83 0 1,1 0,-2.83A2.83,2.83 0 0,1 2.83,0Z" style="opacity: 1; stroke-width: 1.88976px; fill: rgb(0, 0, 0); fill-opacity: 1; stroke: rgb(0, 0, 0); stroke-opacity: 1;"></path><path class="point" transform="translate(43.23,233.94)" d="M2.83,0A2.83,2.83 0 1,1 0,-2.83A2.83,2.83 0 0,1 2.83,0Z" style="opacity: 1; stroke-width: 1.88976px; fill: rgb(0, 0, 0); fill-opacity: 1; stroke: rgb(0, 0, 0); stroke-opacity: 1;"></path><path class="point" transform="translate(67.38,116.63)" d="M2.83,0A2.83,2.83 0 1,1 0,-2.83A2.83,2.83 0 0,1 2.83,0Z" style="opacity: 1; stroke-width: 1.88976px; fill: rgb(0, 0, 0); fill-opacity: 1; stroke: rgb(0, 0, 0); stroke-opacity: 1;"></path><path class="point" transform="translate(45.64,324.14)" d="M2.83,0A2.83,2.83 0 1,1 0,-2.83A2.83,2.83 0 0,1 2.83,0Z" style="opacity: 1; stroke-width: 1.88976px; fill: rgb(0, 0, 0); fill-opacity: 1; stroke: rgb(0, 0, 0); stroke-opacity: 1;"></path><path class="point" transform="translate(48.99,175.92)" d="M2.83,0A2.83,2.83 0 1,1 0,-2.83A2.83,2.83 0 0,1 2.83,0Z" style="opacity: 1; stroke-width: 1.88976px; fill: rgb(0, 0, 0); fill-opacity: 1; stroke: rgb(0, 0, 0); stroke-opacity: 1;"></path><path class="point" transform="translate(62.04,146.27)" d="M2.83,0A2.83,2.83 0 1,1 0,-2.83A2.83,2.83 0 0,1 2.83,0Z" style="opacity: 1; stroke-width: 1.88976px; fill: rgb(0, 0, 0); fill-opacity: 1; stroke: rgb(0, 0, 0); stroke-opacity: 1;"></path><path class="point" transform="translate(70.22,92.28)" d="M2.83,0A2.83,2.83 0 1,1 0,-2.83A2.83,2.83 0 0,1 2.83,0Z" style="opacity: 1; stroke-width: 1.88976px; fill: rgb(0, 0, 0); fill-opacity: 1; stroke: rgb(0, 0, 0); stroke-opacity: 1;"></path><path class="point" transform="translate(103.8,56.28)" d="M2.83,0A2.83,2.83 0 1,1 0,-2.83A2.83,2.83 0 0,1 2.83,0Z" style="opacity: 1; stroke-width: 1.88976px; fill: rgb(0, 0, 0); fill-opacity: 1; stroke: rgb(0, 0, 0); stroke-opacity: 1;"></path><path class="point" transform="translate(114.81,39.34)" d="M2.83,0A2.83,2.83 0 1,1 0,-2.83A2.83,2.83 0 0,1 2.83,0Z" style="opacity: 1; stroke-width: 1.88976px; fill: rgb(0, 0, 0); fill-opacity: 1; stroke: rgb(0, 0, 0); stroke-opacity: 1;"></path><path class="point" transform="translate(47.68,276.61)" d="M2.83,0A2.83,2.83 0 1,1 0,-2.83A2.83,2.83 0 0,1 2.83,0Z" style="opacity: 1; stroke-width: 1.88976px; fill: rgb(0, 0, 0); fill-opacity: 1; stroke: rgb(0, 0, 0); stroke-opacity: 1;"></path><path class="point" transform="translate(64.33,126.16)" d="M2.83,0A2.83,2.83 0 1,1 0,-2.83A2.83,2.83 0 0,1 2.83,0Z" style="opacity: 1; stroke-width: 1.88976px; fill: rgb(0, 0, 0); fill-opacity: 1; stroke: rgb(0, 0, 0); stroke-opacity: 1;"></path><path class="point" transform="translate(45.38,118.53)" d="M2.83,0A2.83,2.83 0 1,1 0,-2.83A2.83,2.83 0 0,1 2.83,0Z" style="opacity: 1; stroke-width: 1.88976px; fill: rgb(0, 0, 0); fill-opacity: 1; stroke: rgb(0, 0, 0); stroke-opacity: 1;"></path><path class="point" transform="translate(44.85,307.1)" d="M2.83,0A2.83,2.83 0 1,1 0,-2.83A2.83,2.83 0 0,1 2.83,0Z" style="opacity: 1; stroke-width: 1.88976px; fill: rgb(0, 0, 0); fill-opacity: 1; stroke: rgb(0, 0, 0); stroke-opacity: 1;"></path><path class="point" transform="translate(46.09,237.22)" d="M2.83,0A2.83,2.83 0 1,1 0,-2.83A2.83,2.83 0 0,1 2.83,0Z" style="opacity: 1; stroke-width: 1.88976px; fill: rgb(0, 0, 0); fill-opacity: 1; stroke: rgb(0, 0, 0); stroke-opacity: 1;"></path><path class="point" transform="translate(63.68,99.69)" d="M2.83,0A2.83,2.83 0 1,1 0,-2.83A2.83,2.83 0 0,1 2.83,0Z" style="opacity: 1; stroke-width: 1.88976px; fill: rgb(0, 0, 0); fill-opacity: 1; stroke: rgb(0, 0, 0); stroke-opacity: 1;"></path><path class="point" transform="translate(52.22,161.1)" d="M2.83,0A2.83,2.83 0 1,1 0,-2.83A2.83,2.83 0 0,1 2.83,0Z" style="opacity: 1; stroke-width: 1.88976px; fill: rgb(0, 0, 0); fill-opacity: 1; stroke: rgb(0, 0, 0); stroke-opacity: 1;"></path><path class="point" transform="translate(65.49,168.51)" d="M2.83,0A2.83,2.83 0 1,1 0,-2.83A2.83,2.83 0 0,1 2.83,0Z" style="opacity: 1; stroke-width: 1.88976px; fill: rgb(0, 0, 0); fill-opacity: 1; stroke: rgb(0, 0, 0); stroke-opacity: 1;"></path><path class="point" transform="translate(43.78,180.05)" d="M2.83,0A2.83,2.83 0 1,1 0,-2.83A2.83,2.83 0 0,1 2.83,0Z" style="opacity: 1; stroke-width: 1.88976px; fill: rgb(0, 0, 0); fill-opacity: 1; stroke: rgb(0, 0, 0); stroke-opacity: 1;"></path><path class="point" transform="translate(55.01,161.1)" d="M2.83,0A2.83,2.83 0 1,1 0,-2.83A2.83,2.83 0 0,1 2.83,0Z" style="opacity: 1; stroke-width: 1.88976px; fill: rgb(0, 0, 0); fill-opacity: 1; stroke: rgb(0, 0, 0); stroke-opacity: 1;"></path><path class="point" transform="translate(79.49,146.27)" d="M2.83,0A2.83,2.83 0 1,1 0,-2.83A2.83,2.83 0 0,1 2.83,0Z" style="opacity: 1; stroke-width: 1.88976px; fill: rgb(0, 0, 0); fill-opacity: 1; stroke: rgb(0, 0, 0); stroke-opacity: 1;"></path><path class="point" transform="translate(58.43,119.8)" d="M2.83,0A2.83,2.83 0 1,1 0,-2.83A2.83,2.83 0 0,1 2.83,0Z" style="opacity: 1; stroke-width: 1.88976px; fill: rgb(0, 0, 0); fill-opacity: 1; stroke: rgb(0, 0, 0); stroke-opacity: 1;"></path><path class="point" transform="translate(75.72,114.51)" d="M2.83,0A2.83,2.83 0 1,1 0,-2.83A2.83,2.83 0 0,1 2.83,0Z" style="opacity: 1; stroke-width: 1.88976px; fill: rgb(0, 0, 0); fill-opacity: 1; stroke: rgb(0, 0, 0); stroke-opacity: 1;"></path><path class="point" transform="translate(58.89,250.14)" d="M2.83,0A2.83,2.83 0 1,1 0,-2.83A2.83,2.83 0 0,1 2.83,0Z" style="opacity: 1; stroke-width: 1.88976px; fill: rgb(0, 0, 0); fill-opacity: 1; stroke: rgb(0, 0, 0); stroke-opacity: 1;"></path><path class="point" transform="translate(44.95,185.34)" d="M2.83,0A2.83,2.83 0 1,1 0,-2.83A2.83,2.83 0 0,1 2.83,0Z" style="opacity: 1; stroke-width: 1.88976px; fill: rgb(0, 0, 0); fill-opacity: 1; stroke: rgb(0, 0, 0); stroke-opacity: 1;"></path><path class="point" transform="translate(44.17,225.79)" d="M2.83,0A2.83,2.83 0 1,1 0,-2.83A2.83,2.83 0 0,1 2.83,0Z" style="opacity: 1; stroke-width: 1.88976px; fill: rgb(0, 0, 0); fill-opacity: 1; stroke: rgb(0, 0, 0); stroke-opacity: 1;"></path><path class="point" transform="translate(56.84,141.19)" d="M2.83,0A2.83,2.83 0 1,1 0,-2.83A2.83,2.83 0 0,1 2.83,0Z" style="opacity: 1; stroke-width: 1.88976px; fill: rgb(0, 0, 0); fill-opacity: 1; stroke: rgb(0, 0, 0); stroke-opacity: 1;"></path><path class="point" transform="translate(80.54,100.75)" d="M2.83,0A2.83,2.83 0 1,1 0,-2.83A2.83,2.83 0 0,1 2.83,0Z" style="opacity: 1; stroke-width: 1.88976px; fill: rgb(0, 0, 0); fill-opacity: 1; stroke: rgb(0, 0, 0); stroke-opacity: 1;"></path><path class="point" transform="translate(149.07,89.1)" d="M2.83,0A2.83,2.83 0 1,1 0,-2.83A2.83,2.83 0 0,1 2.83,0Z" style="opacity: 1; stroke-width: 1.88976px; fill: rgb(0, 0, 0); fill-opacity: 1; stroke: rgb(0, 0, 0); stroke-opacity: 1;"></path><path class="point" transform="translate(57.73,153.68)" d="M2.83,0A2.83,2.83 0 1,1 0,-2.83A2.83,2.83 0 0,1 2.83,0Z" style="opacity: 1; stroke-width: 1.88976px; fill: rgb(0, 0, 0); fill-opacity: 1; stroke: rgb(0, 0, 0); stroke-opacity: 1;"></path><path class="point" transform="translate(61.32,124.99)" d="M2.83,0A2.83,2.83 0 1,1 0,-2.83A2.83,2.83 0 0,1 2.83,0Z" style="opacity: 1; stroke-width: 1.88976px; fill: rgb(0, 0, 0); fill-opacity: 1; stroke: rgb(0, 0, 0); stroke-opacity: 1;"></path><path class="point" transform="translate(47.94,160.04)" d="M2.83,0A2.83,2.83 0 1,1 0,-2.83A2.83,2.83 0 0,1 2.83,0Z" style="opacity: 1; stroke-width: 1.88976px; fill: rgb(0, 0, 0); fill-opacity: 1; stroke: rgb(0, 0, 0); stroke-opacity: 1;"></path><path class="point" transform="translate(60.95,115.57)" d="M2.83,0A2.83,2.83 0 1,1 0,-2.83A2.83,2.83 0 0,1 2.83,0Z" style="opacity: 1; stroke-width: 1.88976px; fill: rgb(0, 0, 0); fill-opacity: 1; stroke: rgb(0, 0, 0); stroke-opacity: 1;"></path><path class="point" transform="translate(45.92,175.92)" d="M2.83,0A2.83,2.83 0 1,1 0,-2.83A2.83,2.83 0 0,1 2.83,0Z" style="opacity: 1; stroke-width: 1.88976px; fill: rgb(0, 0, 0); fill-opacity: 1; stroke: rgb(0, 0, 0); stroke-opacity: 1;"></path><path class="point" transform="translate(54.01,152.63)" d="M2.83,0A2.83,2.83 0 1,1 0,-2.83A2.83,2.83 0 0,1 2.83,0Z" style="opacity: 1; stroke-width: 1.88976px; fill: rgb(0, 0, 0); fill-opacity: 1; stroke: rgb(0, 0, 0); stroke-opacity: 1;"></path><path class="point" transform="translate(42.79,162.15)" d="M2.83,0A2.83,2.83 0 1,1 0,-2.83A2.83,2.83 0 0,1 2.83,0Z" style="opacity: 1; stroke-width: 1.88976px; fill: rgb(0, 0, 0); fill-opacity: 1; stroke: rgb(0, 0, 0); stroke-opacity: 1;"></path><path class="point" transform="translate(52.75,216.15)" d="M2.83,0A2.83,2.83 0 1,1 0,-2.83A2.83,2.83 0 0,1 2.83,0Z" style="opacity: 1; stroke-width: 1.88976px; fill: rgb(0, 0, 0); fill-opacity: 1; stroke: rgb(0, 0, 0); stroke-opacity: 1;"></path><path class="point" transform="translate(43.08,269.19)" d="M2.83,0A2.83,2.83 0 1,1 0,-2.83A2.83,2.83 0 0,1 2.83,0Z" style="opacity: 1; stroke-width: 1.88976px; fill: rgb(0, 0, 0); fill-opacity: 1; stroke: rgb(0, 0, 0); stroke-opacity: 1;"></path><path class="point" transform="translate(45.91,217)" d="M2.83,0A2.83,2.83 0 1,1 0,-2.83A2.83,2.83 0 0,1 2.83,0Z" style="opacity: 1; stroke-width: 1.88976px; fill: rgb(0, 0, 0); fill-opacity: 1; stroke: rgb(0, 0, 0); stroke-opacity: 1;"></path></g><g class="text"></g></g></g></g><g class="overplot"></g><path class="xlines-above crisp" d="" style="fill: none; stroke-width: 1px; stroke: rgb(0, 0, 0); stroke-opacity: 0;"></path><path class="ylines-above crisp" d="" style="fill: none; stroke-width: 1px; stroke: rgb(0, 0, 0); stroke-opacity: 0;"></path><g class="overlines-above"></g><g class="xaxislayer-above"><path class="xtick ticks crisp" d="M0,395v3.652968036529681" transform="translate(83.65,0)" style="stroke: rgb(51, 51, 51); stroke-opacity: 1; stroke-width: 1px;"></path><path class="xtick ticks crisp" d="M0,395v3.652968036529681" transform="translate(314.92,0)" style="stroke: rgb(51, 51, 51); stroke-opacity: 1; stroke-width: 1px;"></path><path class="xtick ticks crisp" d="M0,395v3.652968036529681" transform="translate(546.1800000000001,0)" style="stroke: rgb(51, 51, 51); stroke-opacity: 1; stroke-width: 1px;"></path><path class="xtick ticks crisp" d="M0,395v3.652968036529681" transform="translate(777.45,0)" style="stroke: rgb(51, 51, 51); stroke-opacity: 1; stroke-width: 1px;"></path><g class="xtick"><text text-anchor="middle" x="0" y="412.6803652968037" data-unformatted="0" data-math="N" transform="translate(83.65,0)" style="font-family: &quot;Open Sans&quot;, verdana, arial, sans-serif; font-size: 11.6895px; fill: rgb(77, 77, 77); fill-opacity: 1; white-space: pre; opacity: 1;">0</text></g><g class="xtick"><text text-anchor="middle" x="0" y="412.6803652968037" data-unformatted="200" data-math="N" style="font-family: &quot;Open Sans&quot;, verdana, arial, sans-serif; font-size: 11.6895px; fill: rgb(77, 77, 77); fill-opacity: 1; white-space: pre; opacity: 1;" transform="translate(314.92,0)">200</text></g><g class="xtick"><text text-anchor="middle" x="0" y="412.6803652968037" data-unformatted="400" data-math="N" style="font-family: &quot;Open Sans&quot;, verdana, arial, sans-serif; font-size: 11.6895px; fill: rgb(77, 77, 77); fill-opacity: 1; white-space: pre; opacity: 1;" transform="translate(546.1800000000001,0)">400</text></g><g class="xtick"><text text-anchor="middle" x="0" y="412.6803652968037" data-unformatted="600" data-math="N" style="font-family: &quot;Open Sans&quot;, verdana, arial, sans-serif; font-size: 11.6895px; fill: rgb(77, 77, 77); fill-opacity: 1; white-space: pre; opacity: 1;" transform="translate(777.45,0)">600</text></g></g><g class="yaxislayer-above"><path class="ytick ticks crisp" d="M43,0h-3.652968036529681" transform="translate(0,328.09)" style="stroke: rgb(51, 51, 51); stroke-opacity: 1; stroke-width: 1px;"></path><path class="ytick ticks crisp" d="M43,0h-3.652968036529681" transform="translate(0,222.21)" style="stroke: rgb(51, 51, 51); stroke-opacity: 1; stroke-width: 1px;"></path><path class="ytick ticks crisp" d="M43,0h-3.652968036529681" transform="translate(0,116.34)" style="stroke: rgb(51, 51, 51); stroke-opacity: 1; stroke-width: 1px;"></path><g class="ytick"><text text-anchor="end" x="37.00913242009132" y="4.091324200913243" data-unformatted="60" data-math="N" transform="translate(0,328.09)" style="font-family: &quot;Open Sans&quot;, verdana, arial, sans-serif; font-size: 11.6895px; fill: rgb(77, 77, 77); fill-opacity: 1; white-space: pre; opacity: 1;">60</text></g><g class="ytick"><text text-anchor="end" x="37.00913242009132" y="4.091324200913243" data-unformatted="70" data-math="N" style="font-family: &quot;Open Sans&quot;, verdana, arial, sans-serif; font-size: 11.6895px; fill: rgb(77, 77, 77); fill-opacity: 1; white-space: pre; opacity: 1;" transform="translate(0,222.21)">70</text></g><g class="ytick"><text text-anchor="end" x="37.00913242009132" y="4.091324200913243" data-unformatted="80" data-math="N" style="font-family: &quot;Open Sans&quot;, verdana, arial, sans-serif; font-size: 11.6895px; fill: rgb(77, 77, 77); fill-opacity: 1; white-space: pre; opacity: 1;" transform="translate(0,116.34)">80</text></g></g><g class="overaxes-above"></g></g></g><g class="polarlayer"></g><g class="smithlayer"></g><g class="ternarylayer"></g><g class="geolayer"></g><g class="funnelarealayer"></g><g class="pielayer"></g><g class="iciclelayer"></g><g class="treemaplayer"></g><g class="sunburstlayer"></g><g class="glimages"></g></svg><div class="gl-container"></div><svg class="main-svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="967.6" height="436.55"><defs id="topdefs-82e7e5"><g class="clips"></g></defs><g class="indicatorlayer"></g><g class="layer-above"><g class="imagelayer"></g><g class="shapelayer"></g></g><g class="selectionlayer"></g><g class="infolayer"><g class="g-gtitle"><text class="gtitle" x="44" y="20.5" text-anchor="start" dy="0em" data-unformatted="Ingresos y esperanza de vida - 2024" data-math="N" style="font-family: &quot;Open Sans&quot;, verdana, arial, sans-serif; font-size: 17.53px; fill: rgb(0, 0, 0); opacity: 1; font-weight: normal; white-space: pre;">Ingresos y esperanza de vida - 2024</text></g><g class="g-xtitle" transform="translate(0,-14.485226194825884)"><text class="xtitle" x="502.5" y="447.83561643835617" text-anchor="middle" data-unformatted="Ingresos" data-math="N" style="font-family: &quot;Open Sans&quot;, verdana, arial, sans-serif; font-size: 14.61px; fill: rgb(0, 0, 0); opacity: 1; font-weight: normal; white-space: pre;">Ingresos</text></g><g class="g-ytitle" transform="translate(9.6240234375,0)"><text class="ytitle" transform="rotate(-90,4.776255707762552,217.5)" x="4.776255707762552" y="217.5" text-anchor="middle" data-unformatted="Esperanza de vida" data-math="N" style="font-family: &quot;Open Sans&quot;, verdana, arial, sans-serif; font-size: 14.61px; fill: rgb(0, 0, 0); opacity: 1; font-weight: normal; white-space: pre;">Esperanza de vida</text></g></g><g class="menulayer"></g><g class="zoomlayer"></g></svg><div class="modebar-container" style="position: absolute; top: 0px; right: 0px; width: 100%;"><div id="modebar-82e7e5" class="modebar modebar--hover ease-bg"><div class="modebar-group"><a rel="tooltip" class="modebar-btn" data-title="Download plot as a png" data-toggle="false" data-gravity="n"><svg viewBox="0 0 1000 1000" class="icon" height="1em" width="1em"><path d="m500 450c-83 0-150-67-150-150 0-83 67-150 150-150 83 0 150 67 150 150 0 83-67 150-150 150z m400 150h-120c-16 0-34 13-39 29l-31 93c-6 15-23 28-40 28h-340c-16 0-34-13-39-28l-31-94c-6-15-23-28-40-28h-120c-55 0-100-45-100-100v-450c0-55 45-100 100-100h800c55 0 100 45 100 100v450c0 55-45 100-100 100z m-400-550c-138 0-250 112-250 250 0 138 112 250 250 250 138 0 250-112 250-250 0-138-112-250-250-250z m365 380c-19 0-35 16-35 35 0 19 16 35 35 35 19 0 35-16 35-35 0-19-16-35-35-35z" transform="matrix(1 0 0 -1 0 850)"></path></svg></a></div><div class="modebar-group"><a rel="tooltip" class="modebar-btn active" data-title="Zoom" data-attr="dragmode" data-val="zoom" data-toggle="false" data-gravity="n"><svg viewBox="0 0 1000 1000" class="icon" height="1em" width="1em"><path d="m1000-25l-250 251c40 63 63 138 63 218 0 224-182 406-407 406-224 0-406-182-406-406s183-406 407-406c80 0 155 22 218 62l250-250 125 125z m-812 250l0 438 437 0 0-438-437 0z m62 375l313 0 0-312-313 0 0 312z" transform="matrix(1 0 0 -1 0 850)"></path></svg></a><a rel="tooltip" class="modebar-btn" data-title="Pan" data-attr="dragmode" data-val="pan" data-toggle="false" data-gravity="n"><svg viewBox="0 0 1000 1000" class="icon" height="1em" width="1em"><path d="m1000 350l-187 188 0-125-250 0 0 250 125 0-188 187-187-187 125 0 0-250-250 0 0 125-188-188 186-187 0 125 252 0 0-250-125 0 187-188 188 188-125 0 0 250 250 0 0-126 187 188z" transform="matrix(1 0 0 -1 0 850)"></path></svg></a><a rel="tooltip" class="modebar-btn" data-title="Box Select" data-attr="dragmode" data-val="select" data-toggle="false" data-gravity="n"><svg viewBox="0 0 1000 1000" class="icon" height="1em" width="1em"><path d="m0 850l0-143 143 0 0 143-143 0z m286 0l0-143 143 0 0 143-143 0z m285 0l0-143 143 0 0 143-143 0z m286 0l0-143 143 0 0 143-143 0z m-857-286l0-143 143 0 0 143-143 0z m857 0l0-143 143 0 0 143-143 0z m-857-285l0-143 143 0 0 143-143 0z m857 0l0-143 143 0 0 143-143 0z m-857-286l0-143 143 0 0 143-143 0z m286 0l0-143 143 0 0 143-143 0z m285 0l0-143 143 0 0 143-143 0z m286 0l0-143 143 0 0 143-143 0z" transform="matrix(1 0 0 -1 0 850)"></path></svg></a><a rel="tooltip" class="modebar-btn" data-title="Lasso Select" data-attr="dragmode" data-val="lasso" data-toggle="false" data-gravity="n"><svg viewBox="0 0 1031 1000" class="icon" height="1em" width="1em"><path d="m1018 538c-36 207-290 336-568 286-277-48-473-256-436-463 10-57 36-108 76-151-13-66 11-137 68-183 34-28 75-41 114-42l-55-70 0 0c-2-1-3-2-4-3-10-14-8-34 5-45 14-11 34-8 45 4 1 1 2 3 2 5l0 0 113 140c16 11 31 24 45 40 4 3 6 7 8 11 48-3 100 0 151 9 278 48 473 255 436 462z m-624-379c-80 14-149 48-197 96 42 42 109 47 156 9 33-26 47-66 41-105z m-187-74c-19 16-33 37-39 60 50-32 109-55 174-68-42-25-95-24-135 8z m360 75c-34-7-69-9-102-8 8 62-16 128-68 170-73 59-175 54-244-5-9 20-16 40-20 61-28 159 121 317 333 354s407-60 434-217c28-159-121-318-333-355z" transform="matrix(1 0 0 -1 0 850)"></path></svg></a></div><div class="modebar-group"><a rel="tooltip" class="modebar-btn" data-title="Zoom in" data-attr="zoom" data-val="in" data-toggle="false" data-gravity="n"><svg viewBox="0 0 875 1000" class="icon" height="1em" width="1em"><path d="m1 787l0-875 875 0 0 875-875 0z m687-500l-187 0 0-187-125 0 0 187-188 0 0 125 188 0 0 187 125 0 0-187 187 0 0-125z" transform="matrix(1 0 0 -1 0 850)"></path></svg></a><a rel="tooltip" class="modebar-btn" data-title="Zoom out" data-attr="zoom" data-val="out" data-toggle="false" data-gravity="n"><svg viewBox="0 0 875 1000" class="icon" height="1em" width="1em"><path d="m0 788l0-876 875 0 0 876-875 0z m688-500l-500 0 0 125 500 0 0-125z" transform="matrix(1 0 0 -1 0 850)"></path></svg></a><a rel="tooltip" class="modebar-btn" data-title="Autoscale" data-attr="zoom" data-val="auto" data-toggle="false" data-gravity="n"><svg viewBox="0 0 1000 1000" class="icon" height="1em" width="1em"><path d="m250 850l-187 0-63 0 0-62 0-188 63 0 0 188 187 0 0 62z m688 0l-188 0 0-62 188 0 0-188 62 0 0 188 0 62-62 0z m-875-938l0 188-63 0 0-188 0-62 63 0 187 0 0 62-187 0z m875 188l0-188-188 0 0-62 188 0 62 0 0 62 0 188-62 0z m-125 188l-1 0-93-94-156 156 156 156 92-93 2 0 0 250-250 0 0-2 93-92-156-156-156 156 94 92 0 2-250 0 0-250 0 0 93 93 157-156-157-156-93 94 0 0 0-250 250 0 0 0-94 93 156 157 156-157-93-93 0 0 250 0 0 250z" transform="matrix(1 0 0 -1 0 850)"></path></svg></a><a rel="tooltip" class="modebar-btn" data-title="Reset axes" data-attr="zoom" data-val="reset" data-toggle="false" data-gravity="n"><svg viewBox="0 0 928.6 1000" class="icon" height="1em" width="1em"><path d="m786 296v-267q0-15-11-26t-25-10h-214v214h-143v-214h-214q-15 0-25 10t-11 26v267q0 1 0 2t0 2l321 264 321-264q1-1 1-4z m124 39l-34-41q-5-5-12-6h-2q-7 0-12 3l-386 322-386-322q-7-4-13-4-7 2-12 7l-35 41q-4 5-3 13t6 12l401 334q18 15 42 15t43-15l136-114v109q0 8 5 13t13 5h107q8 0 13-5t5-13v-227l122-102q5-5 6-12t-4-13z" transform="matrix(1 0 0 -1 0 850)"></path></svg></a></div><div class="modebar-group"><a rel="tooltip" class="modebar-btn active" data-title="Show closest data on hover" data-attr="hovermode" data-val="closest" data-toggle="false" data-gravity="ne"><svg viewBox="0 0 1500 1000" class="icon" height="1em" width="1em"><path d="m375 725l0 0-375-375 375-374 0-1 1125 0 0 750-1125 0z" transform="matrix(1 0 0 -1 0 850)"></path></svg></a><a rel="tooltip" class="modebar-btn" data-title="Compare data on hover" data-attr="hovermode" data-val="x" data-toggle="false" data-gravity="ne"><svg viewBox="0 0 1125 1000" class="icon" height="1em" width="1em"><path d="m187 786l0 2-187-188 188-187 0 0 937 0 0 373-938 0z m0-499l0 1-187-188 188-188 0 0 937 0 0 376-938-1z" transform="matrix(1 0 0 -1 0 850)"></path></svg></a></div><div class="modebar-group"><a href="https://plotly.com/" target="_blank" data-title="Produced with Plotly.js (v2.25.2)" class="modebar-btn plotlyjsicon modebar-btn--logo"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 132 132" height="1em" width="1em"><defs> <style>  .cls-0{fill:#000;}  .cls-1{fill:#FFF;}  .cls-2{fill:#F26;}  .cls-3{fill:#D69;}  .cls-4{fill:#BAC;}  .cls-5{fill:#9EF;} </style></defs> <title>plotly-logomark</title> <g id="symbol">  <rect class="cls-0" x="0" y="0" width="132" height="132" rx="18" ry="18"></rect>  <circle class="cls-5" cx="102" cy="30" r="6"></circle>  <circle class="cls-4" cx="78" cy="30" r="6"></circle>  <circle class="cls-4" cx="78" cy="54" r="6"></circle>  <circle class="cls-3" cx="54" cy="30" r="6"></circle>  <circle class="cls-2" cx="30" cy="30" r="6"></circle>  <circle class="cls-2" cx="30" cy="54" r="6"></circle>  <path class="cls-1" d="M30,72a6,6,0,0,0-6,6v24a6,6,0,0,0,12,0V78A6,6,0,0,0,30,72Z"></path>  <path class="cls-1" d="M78,72a6,6,0,0,0-6,6v24a6,6,0,0,0,12,0V78A6,6,0,0,0,78,72Z"></path>  <path class="cls-1" d="M54,48a6,6,0,0,0-6,6v48a6,6,0,0,0,12,0V54A6,6,0,0,0,54,48Z"></path>  <path class="cls-1" d="M102,48a6,6,0,0,0-6,6v48a6,6,0,0,0,12,0V54A6,6,0,0,0,102,48Z"></path> </g></svg></a></div></div></div><svg class="main-svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="967.6" height="436.55"><g class="hoverlayer"></g></svg></div></div></div>
+</div></div></div>
+</div>
+<div id="section-column-1" class="section level2 dashboard-column" data-width="350" style="flex: 350 350 0px;">
+
+<div id="section-chart-b" class="section level3 chart-wrapper chart-wrapper-flex" style="flex: 491.8 491.8 0px;"><div class="chart-title">Chart B</div><div class="chart-stage chart-stage-flex"><div class="chart-shim">
+
+<div class="knitr-options" data-fig-width="576" data-fig-height="460">
+
+</div>
+<div class="form-group shiny-input-container">
+<label class="control-label" id="country-label" for="country-selectized">Selecciona un país:</label>
+<div>
+<select id="country" class="shiny-input-select selectized shiny-bound-input" tabindex="-1" style="display: none;">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<option value="Spain" selected="selected">Spain</option></select><div class="shiny-input-select selectize-control single plugin-selectize-plugin-a11y"><div class="selectize-input items full has-options has-items"><div class="item" data-value="Spain">Spain</div><input type="text" autocomplete="new-password" autofill="no" tabindex="" id="country-selectized" role="combobox" aria-expanded="false" haspopup="listbox" aria-owns="ol3dtu7oaf" style="width: 4px;"></div><div class="single selectize-dropdown shiny-input-select plugin-selectize-plugin-a11y" style="display: none;"><div class="selectize-dropdown-content" tabindex="-1" role="listbox" id="ol3dtu7oaf"></div></div></div>
+<script type="application/json" data-for="country" data-nonempty="">{"plugins":["selectize-plugin-a11y"]}</script>
+</div>
+</div>
+<div class="knitr-options" data-fig-width="576" data-fig-height="460">
+
+</div>
+<div class="shiny-plot-output html-fill-item shiny-bound-output" id="outd44921b248386922" style="width:100%;height:400px;" aria-live="polite"><img src="data:image/png;base64,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" width="509.2000122070312" height="278" alt="Plot object"></div>
+</div></div></div>
+<div id="section-chart-c" class="section level3 chart-wrapper chart-wrapper-flex" style="flex: 491.8 491.8 0px;"><div class="chart-title">Chart C</div><div class="chart-stage chart-stage-flex"><div class="chart-shim bootstrap-table flowing-content-shim">
+
+<div class="knitr-options" data-fig-width="576" data-fig-height="460">
+
+</div>
+<div id="outd274862627d206fb" class="shiny-html-output shiny-table-output shiny-bound-output" aria-live="polite"><table class="table shiny-table table- spacing-s" style="width: auto; padding: 0px;">
+<thead class="tableFloatingHeaderOriginal"> <tr> <th style="text-align: left;"> País </th> <th style="text-align: right;"> Año </th> <th style="text-align: right;"> Ingresos </th> <th style="text-align: right;"> Esperanza_de_vida </th> <th style="text-align: right;"> Fertilidad </th> <th style="text-align: right;"> Población </th>  </tr> </thead><thead class="tableFloatingHeader" style="display: none; opacity: 0;"> <tr> <th style="text-align: left;"> País </th> <th style="text-align: right;"> Año </th> <th style="text-align: right;"> Ingresos </th> <th style="text-align: right;"> Esperanza_de_vida </th> <th style="text-align: right;"> Fertilidad </th> <th style="text-align: right;"> Población </th>  </tr> </thead> <tbody>
+  <tr> <td> Spain </td> <td align="right"> 2024.00 </td> <td align="right"> 56.04 </td> <td align="right"> 83.30 </td> <td align="right"> 1.10 </td> <td align="right"> 47910526.00 </td> </tr>
+   </tbody> </table></div>
+</div></div></div>
+</div>
+
+</div></div>
+
+<script>
+$(document).ready(function() {
+  // add bootstrap table styles to pandoc tables
+  $('tr.header').parent('thead').parent('table').addClass('table table-condensed table-sm');
+
+  // initialize mathjax
+  var script = document.createElement("script");
+  script.type = "text/javascript";
+  script.src  = "mathjax-local/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+  document.getElementsByTagName("head")[0].appendChild(script);
+
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function () {
+  FlexDashboard.init({
+    fillPage: true,
+    orientation: "columns",
+    storyboard: false,
+    defaultFigWidth: 576,
+    defaultFigHeight: 460,
+    defaultFigWidthMobile: 360,
+    defaultFigHeightMobile: 460,
+    resize_reload: true
+  });
+  var navbar = $(".navbar").first();
+  var body = $("body").first();
+  var sidebar = $(".section.sidebar").first();
+  function addNavbarPadding() {
+    var navHeight = navbar.outerHeight();
+    body.css("padding-top", (navHeight + 8) + "px");
+    sidebar.css("top", navHeight + "px");
+    var resizeEvent = window.document.createEvent("UIEvents");
+    resizeEvent.initUIEvent("resize", true, false, window, 0);
+    window.dispatchEvent(resizeEvent);
+  }
+  if (!window.Shiny) setTimeout(addNavbarPadding, 100);
+  $(document).on("shiny:idle", function() {
+    setTimeout(addNavbarPadding, 50);
+  });
+});
+</script>
+
+
+</div>
+  </div>
+
+
+<div aria-live="assertive" role="log" aria-relevant="additions" aria-atomic="true" style="position: absolute; width: 1px; height: 1px; margin-top: -1px; clip: rect(1px, 1px, 1px, 1px); overflow: hidden;"><div>Ingresos</div></div><div aria-live="assertive" role="log" aria-relevant="additions" aria-atomic="true" style="position: absolute; width: 1px; height: 1px; margin-top: -1px; clip: rect(1px, 1px, 1px, 1px); overflow: hidden;"></div><svg id="js-plotly-tester" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="position: absolute; left: -10000px; top: -10000px; width: 9000px; height: 9000px; z-index: 1;"><path class="js-reference-point" d="M0,0H1V1H0Z" style="stroke-width: 0; fill: black;"></path></svg></body><grammarly-desktop-integration data-grammarly-shadow-root="true" style="visibility: visible !important;"><template shadowrootmode="open"><style>
+      div.grammarly-desktop-integration {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        white-space: nowrap;
+        border: 0;
+        -moz-user-select: none;
+        -webkit-user-select: none;
+        -ms-user-select:none;
+        user-select:none;
+      }
+
+      div.grammarly-desktop-integration:before {
+        content: attr(data-content);
+      }
+    </style><div aria-label="grammarly-integration" role="group" tabindex="-1" class="grammarly-desktop-integration" data-content="{&quot;mode&quot;:&quot;full&quot;,&quot;isActive&quot;:true,&quot;isUserDisabled&quot;:false}"></div></template></grammarly-desktop-integration></html>
