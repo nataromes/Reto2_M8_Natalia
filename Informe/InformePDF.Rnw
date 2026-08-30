@@ -8,8 +8,24 @@
 \date{\today}
 
 \begin{document}
+\SweaveOpts{concordance=TRUE}
 
 \maketitle
+
+
+<<cargar-datos, echo=FALSE>>=
+library(readr)
+library(dplyr)
+library(ggplot2)
+library(here)
+
+here::i_am("Informe/InformePDF.Rnw")
+
+datos <- read_csv(
+  here("Datos", "BBDD finales", "datos_gapminder_final.csv"),
+  show_col_types = FALSE
+)
+@
 
 \section{Introducción}
 
@@ -19,4 +35,40 @@ Este informe resume los principales resultados del proyecto de Ciencia de Datos 
 
 El objetivo principal del proyecto es analizar de forma visual la relación entre distintos indicadores socioeconómicos, demográficos y sanitarios de varios países.
 
+\section{Resumen de indicadores}
+
+<<tabla-resumen, results=tex, echo=FALSE>>=
+library(knitr)
+
+tabla_resumen <- datos %>%
+  filter(year == 2024) %>%
+  summarise(
+    `Ingresos medios` = mean(income, na.rm = TRUE),
+    `Esperanza de vida media` = mean(life_expectancy, na.rm = TRUE),
+    `Fertilidad media` = mean(fertility, na.rm = TRUE),
+    `Población total` = sum(population, na.rm = TRUE)
+  )
+kable(
+  tabla_resumen,
+  format = "latex",
+  digits = 2,
+ 
+)
+@
+
+\section{Relación entre ingresos y esperanza de vida}
+
+
+<<grafico-principal, echo=FALSE, fig=TRUE>>=
+datos_2024 <- datos %>%
+  filter(year == 2024)
+
+ggplot(datos_2024, aes(x = income, y = life_expectancy)) +
+  geom_point() +
+  labs(
+    title = "Ingresos y esperanza de vida en 2024",
+    x = "Ingresos por persona",
+    y = "Esperanza de vida"
+  )
+@
 \end{document}
