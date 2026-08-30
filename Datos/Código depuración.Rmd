@@ -148,4 +148,7 @@ write_csv(
 summary(datos_finales)
 
 ```
+```{r}
+install.packages("flexdashboard")
+```
 
