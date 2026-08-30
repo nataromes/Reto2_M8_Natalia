@@ -1,5 +1,0 @@
----
-title: "Base de datos depurada"
-output: html_document
----
-

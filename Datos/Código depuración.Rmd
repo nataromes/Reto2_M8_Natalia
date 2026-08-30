@@ -119,6 +119,33 @@ poblacion_largo <- poblacion %>%
 ```
 
 ```{r}
-a
+# comprobamos que la transposición ha funcionado
+head(esperanza_largo)
+head(fertilidad_largo)
+head(poblacion_largo)
+```
+
+```{r}
+# Unificamos toda la información
+datos_finales <- ingresos_largo %>%
+  left_join(esperanza_largo, by = c("geo", "name", "year")) %>%
+  left_join(fertilidad_largo, by = c("geo", "name", "year")) %>%
+  left_join(poblacion_largo, by = c("geo", "name", "year"))
+
+head(datos_finales)
+glimpse(datos_finales)
+```
+
+```{r}
+write_csv(
+  datos_finales,
+  "BBDD finales/datos_gapminder_final.csv"
+)
+
+```
+
+```{r}
+summary(datos_finales)
+
 ```
 

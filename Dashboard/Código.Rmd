@@ -1,5 +1,64 @@
 ---
-title: "Código"
-output: html_document
+title: "Dashboard Gapminder"
+output: 
+  flexdashboard::flex_dashboard:
+    orientation: columns
+    vertical_layout: fill
+runtime: shiny
 ---
+
+```{r setup, include=FALSE}
+library(flexdashboard)
+library(tidyverse)
+library(shiny)
+
+datos <- read_csv("Datos/BBDD finales/datos_gapminder_final.csv")
+
+#añadimos un slider para facilitar la interacción con el gráfico y poder seleccionar el tiempo
+sliderInput(
+  inputId = "year",
+  label = "Selecciona un año:",
+  min = 1960,
+  max = 2024,
+  value = 2024,
+  step = 1
+)
+```
+
+Column {data-width=650}
+-----------------------------------------------------------------------
+
+### Chart A
+
+```{r}
+renderPlot({
+  
+  datos_filtrados <- datos %>%
+    filter(year == input$year)
+  
+  ggplot(datos_filtrados,
+         aes(x = income, y = life_expectancy)) +
+    geom_point() +
+    labs(
+      x = "Ingresos por persona",
+      y = "Esperanza de vida",
+      title = paste("Ingresos y esperanza de vida -", input$year)
+    )
+})
+```
+
+Column {data-width=350}
+-----------------------------------------------------------------------
+
+### Chart B
+
+```{r}
+
+```
+
+### Chart C
+
+```{r}
+
+```
 
