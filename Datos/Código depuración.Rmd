@@ -74,3 +74,51 @@ ingresos_largo <- ingresos %>%
 which(is.na(ingresos), arr.ind = TRUE)
 # el error corresponde a un dato de proyección que no usaremos, por lo que se mantiene como NA
 ```
+```{r}
+ingresos_largo <- ingresos %>%
+  pivot_longer(
+    cols = -c(geo, name),
+    names_to = "year",
+    values_to = "income"
+  ) %>%
+  mutate(year = as.integer(year)) %>%
+  filter(year >= 1960, year <= 2024)
+
+# usamos filter para acotar los datos a un periodo mas reciente
+```
+
+```{r}
+# realizamos el mismo cambio para el resto de indicadores
+
+esperanza_largo <- esperanza_vida %>%
+  pivot_longer(
+    cols = -c(geo, name),
+    names_to = "year",
+    values_to = "life_expectancy"
+  ) %>%
+  mutate(year = as.integer(year)) %>%
+  filter(year >= 1960, year <= 2024)
+
+fertilidad_largo <- fertilidad %>%
+  pivot_longer(
+    cols = -c(geo, name),
+    names_to = "year",
+    values_to = "fertility"
+  ) %>%
+  mutate(year = as.integer(year)) %>%
+  filter(year >= 1960, year <= 2024)
+
+poblacion_largo <- poblacion %>%
+  pivot_longer(
+    cols = -c(geo, name),
+    names_to = "year",
+    values_to = "population"
+  ) %>%
+  mutate(year = as.integer(year)) %>%
+  filter(year >= 1960, year <= 2024)
+```
+
+```{r}
+a
+```
+
