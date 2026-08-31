@@ -10,13 +10,14 @@
 \begin{document}
 \SweaveOpts{concordance=TRUE}
 
-\maketitle
+\maketitle 
 
 
 <<cargar-datos, echo=FALSE>>=
 library(readr)
 library(dplyr)
 library(ggplot2)
+library(knitr)
 library(here)
 
 here::i_am("Informe/InformePDF.Rnw")
@@ -71,4 +72,19 @@ ggplot(datos_2024, aes(x = income, y = life_expectancy)) +
     y = "Esperanza de vida"
   )
 @
+
+
+\section{Interpretación de resultados}
+
+En el año 2024, la esperanza de vida media de los países analizados fue de
+\Sexpr{round(mean(datos_2024$life_expectancy, na.rm = TRUE), 1)} años.
+
+La fertilidad media fue de
+\Sexpr{round(mean(datos_2024$fertility, na.rm = TRUE), 2)} hijos por mujer.
+
+Los resultados muestran que existe una relación positiva entre los ingresos por persona y la esperanza de vida. En general, los países con mayores ingresos presentan una esperanza de vida más elevada, aunque existen diferencias entre países.
+
+
+
+
 \end{document}
