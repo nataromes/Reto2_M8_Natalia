@@ -1,0 +1,19 @@
+# Reto 2 - Ciencia de Datos
+
+Este repositorio contiene el desarrollo del Reto 2 realizado con datos de Gapminder.
+
+## Contenido
+
+- **Datos**: bases de datos originales, código de depuración y base final.
+- **Dashboard**: código y resultado del dashboard interactivo.
+- **Informe**: código fuente y PDF del informe técnico.
+- **Presentación**: código y presentación final.
+
+## Datos utilizados
+
+Se han utilizado indicadores de Gapminder relacionados con:
+
+- Ingresos por persona
+- Esperanza de vida
+- Fertilidad
+- Población
